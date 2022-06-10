@@ -1,0 +1,4 @@
+#Fri Jun 10 19:11:32 ICT 2022
+base.0=D\:\\Capstone\\flutter_engineer\\flutter_bayeue\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
