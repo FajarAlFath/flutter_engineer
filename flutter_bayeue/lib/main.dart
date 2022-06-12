@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bayeue/pages/started_page.dart';
-
 import 'package:flutter_bayeue/viewmodel/auth_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -21,6 +20,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       builder: (context, child) => const MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: StartedPage(),
       ),
     );
