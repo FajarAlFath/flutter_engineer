@@ -308,6 +308,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "unicons",
+      "rootUri": "file:///home/alfath/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/unicons-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "universal_io",
       "rootUri": "file:///home/alfath/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/universal_io-2.0.4",
       "packageUri": "lib/",
@@ -350,7 +356,7 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2022-06-13T12:53:40.107518Z",
+  "generated": "2022-06-13T12:55:11.518355Z",
   "generator": "pub",
   "generatorVersion": "2.17.1"
 }

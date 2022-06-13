@@ -9,7 +9,7 @@ class CreatePinPage extends StatefulWidget {
 
 class _CreatePinPageState extends State<CreatePinPage> {
   final fromKey = GlobalKey<FormState>();
-  final _CreatePinController = TextEditingController();
+  final _createPinController = TextEditingController();
   final _pinconfirmController = TextEditingController();
 
   @override
@@ -56,7 +56,7 @@ class _CreatePinPageState extends State<CreatePinPage> {
                 ),
                 TextFormField(
                   keyboardType: TextInputType.number,
-                  controller: _CreatePinController,
+                  controller: _createPinController,
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Masukan Pin';
@@ -87,7 +87,7 @@ class _CreatePinPageState extends State<CreatePinPage> {
                     if (value!.isEmpty) {
                       return 'Masukan Pin';
                     }
-                    if (value != _CreatePinController.text) {
+                    if (value != _createPinController.text) {
                       return 'Pin Tidak sama';
                     }
                     return null;
