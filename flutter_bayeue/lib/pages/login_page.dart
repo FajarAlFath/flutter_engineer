@@ -90,6 +90,8 @@ class _LoginPageState extends State<LoginPage> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Masukan Password';
+                      } else if (value.length < 6) {
+                        return 'Masukan minimal 6 karakter';
                       }
                       return null;
                     },

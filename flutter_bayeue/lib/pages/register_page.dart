@@ -118,6 +118,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Tidak Boleh Kosong';
+                      } else if (value.length < 10) {
+                        return 'Nomor Tidak Valid';
                       }
                       return null;
                     },
@@ -143,6 +145,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Masukan Password';
+                      } else if (value.length < 6) {
+                        return 'Masukan minimal 6 karakter';
                       }
                       return null;
                     },
