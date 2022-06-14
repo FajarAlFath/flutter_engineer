@@ -37,7 +37,9 @@ dependencies:
   flutter_native_splash: ^2.2.3
   provider: ^6.0.3
   shared_preferences: ^2.0.15
+  flutter_svg: ^1.1.0
   unicons: any
+  dio: ^4.0.6
 
 flutter_native_splash:
 
@@ -175,6 +177,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/started.svg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
