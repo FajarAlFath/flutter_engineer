@@ -40,6 +40,7 @@ dependencies:
   flutter_svg: ^1.1.0
   unicons: any
   dio: 
+  email_validator: ^2.0.1
 
 flutter_native_splash:
 

@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bayeue/pages/login_page.dart';
 import 'package:flutter_bayeue/pages/verifikasi_page.dart';
@@ -90,6 +91,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Masukan Email';
+                      } else if (!EmailValidator.validate(value)) {
+                        return 'Email Tidak Sesuai';
                       }
                       return null;
                     },

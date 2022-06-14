@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bayeue/home/home_page.dart';
 import 'package:flutter_bayeue/pages/lupa_password_page.dart';
@@ -62,6 +63,8 @@ class _LoginPageState extends State<LoginPage> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Masukan Email';
+                      } else if (!EmailValidator.validate(value)) {
+                        return 'Email Tidak Valid';
                       }
                       return null;
                     },
