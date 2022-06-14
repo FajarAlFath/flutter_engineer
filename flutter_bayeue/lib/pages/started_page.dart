@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bayeue/pages/login_page.dart';
 import 'package:flutter_bayeue/viewmodel/auth_provider.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 class StartedPage extends StatelessWidget {
@@ -31,8 +32,8 @@ class StartedPage extends StatelessWidget {
                             height: 30,
                           ),
                           Center(
-                            child: Image.asset(
-                              'assets/images/started.png',
+                            child: SvgPicture.asset(
+                              'assets/started.svg',
                               height: 300,
                             ),
                           ),

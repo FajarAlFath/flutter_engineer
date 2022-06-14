@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bayeue/pages/login_page.dart';
 import 'package:flutter_bayeue/pages/verifikasi_page.dart';
+import 'package:flutter_bayeue/viewmodel/auth_provider.dart';
+import 'package:provider/provider.dart';
 
 class RegisterPage extends StatefulWidget {
+  final url =
+      'https://virtserver.swaggerhub.com/gozza/Payment-Point/1.0.0-beta/api/user/';
   const RegisterPage({Key? key}) : super(key: key);
 
   @override
@@ -13,7 +17,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final fromKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _nameController = TextEditingController();
-  final _noTelpController = TextEditingController();
+  final _phoneController = TextEditingController();
   final _passwordController = TextEditingController();
 
   bool passwordVisible = false;
@@ -22,6 +26,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(context);
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 227, 244, 254),
       body: SafeArea(
@@ -105,8 +110,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     height: 10,
                   ),
                   TextFormField(
-                    keyboardType: TextInputType.number,
-                    controller: _noTelpController,
+                    keyboardType: TextInputType.phone,
+                    controller: _phoneController,
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Tidak Boleh Kosong';
@@ -208,12 +213,19 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        minimumSize: const Size(double.infinity, 50),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15))),
+                      minimumSize: const Size(double.infinity, 50),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ),
                     onPressed: check == true
-                        ? (() {
+                        ? (() async {
                             if (fromKey.currentState!.validate()) {
+                              await authProvider.register(
+                                  _nameController.text,
+                                  _emailController.text,
+                                  _phoneController.text,
+                                  _passwordController.text);
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(builder: (context) {
@@ -264,7 +276,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ],
                   ),
                   const SizedBox(
-                    height: 10,
+                    height: 20,
                   )
                 ],
               ),

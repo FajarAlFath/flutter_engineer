@@ -10,10 +10,9 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
-    // var authProvider = Provider.of<AuthProvider>(context);
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
@@ -21,6 +20,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       builder: (context, child) => const MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: StartedPage(),
       ),
     );

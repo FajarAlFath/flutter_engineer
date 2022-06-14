@@ -52,6 +52,7 @@ class _VerifikasiPageState extends State<VerifikasiPage> {
                     height: 10,
                   ),
                   TextFormField(
+                    keyboardType: TextInputType.number,
                     controller: _otpController,
                     validator: (value) {
                       if (value!.isEmpty) {

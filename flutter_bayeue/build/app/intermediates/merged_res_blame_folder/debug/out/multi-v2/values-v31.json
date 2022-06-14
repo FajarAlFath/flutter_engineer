@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Capstone\\flutter_engineer\\flutter_bayeue\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v31\\values-v31.xml",
+            "outputFile": "D:\\Latihan\\CAPSTONE\\flutter_engineer\\flutter_bayeue\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v31\\values-v31.xml",
             "map": [
                 {
-                    "source": "D:\\Capstone\\flutter_engineer\\flutter_bayeue\\android\\app\\src\\main\\res\\values-v31\\styles.xml",
+                    "source": "D:\\Latihan\\CAPSTONE\\flutter_engineer\\flutter_bayeue\\android\\app\\src\\main\\res\\values-v31\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bayeue/home/home_page.dart';
 import 'package:flutter_bayeue/pages/lupa_password_page.dart';
 import 'package:flutter_bayeue/pages/register_page.dart';
+import 'package:flutter_bayeue/viewmodel/auth_provider.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -19,6 +22,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(context);
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 227, 244, 254),
       body: SafeArea(
@@ -147,7 +151,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   const SizedBox(
-                    height: 80,
+                    height: 50,
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
@@ -156,8 +160,15 @@ class _LoginPageState extends State<LoginPage> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                     ),
-                    onPressed: (() {
-                      if (fromKey.currentState!.validate()) {}
+                    onPressed: (() async {
+                      if (fromKey.currentState!.validate()) {
+                        await authProvider.login(
+                            _emailController.text, _passwordController.text);
+                        Navigator.pushAndRemoveUntil(context,
+                            MaterialPageRoute(builder: (ctx) {
+                          return const HomePage();
+                        }), (route) => false);
+                      }
                     }),
                     child: const Text(
                       'Login',
@@ -168,7 +179,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
