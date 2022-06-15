@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bayeue/pages/login/login_page.dart';
 import 'package:flutter_bayeue/pages/register/verifikasi_page.dart';
@@ -90,6 +91,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Masukan Email';
+                      } else if (!EmailValidator.validate(value)) {
+                        return 'Email Tidak Sesuai';
                       }
                       return null;
                     },
@@ -115,6 +118,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Tidak Boleh Kosong';
+                      } else if (value.length < 10) {
+                        return 'Nomor Tidak Valid';
                       }
                       return null;
                     },
@@ -140,6 +145,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Masukan Password';
+                      } else if (value.length < 6) {
+                        return 'Masukan minimal 6 karakter';
                       }
                       return null;
                     },
@@ -226,6 +233,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   _emailController.text,
                                   _phoneController.text,
                                   _passwordController.text);
+                              // ignore: use_build_context_synchronously
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(builder: (context) {
