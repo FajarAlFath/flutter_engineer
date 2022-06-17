@@ -8,9 +8,8 @@ class AuthApi {
     };
 
     var dio = Dio();
-    var response = await dio.post(
-        'https://virtserver.swaggerhub.com/gozza/Payment-Point/1.0.0-beta/api/users/login',
-        data: formlogin);
+    var response =
+        await dio.post('http://3.0.50.89:19000/login', data: formlogin);
     print(response.data.toString());
   }
 
@@ -23,9 +22,8 @@ class AuthApi {
     };
 
     var dio = Dio();
-    var response = await dio.post(
-        'https://virtserver.swaggerhub.com/gozza/Payment-Point/1.0.0-beta/api/users/register',
-        data: formlogin);
+    var response =
+        await dio.post('http://3.0.50.89:19000/register', data: formlogin);
     print(response.data.toString());
   }
 }
