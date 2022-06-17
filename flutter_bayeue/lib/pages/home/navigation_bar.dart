@@ -6,7 +6,7 @@ import 'package:flutter_bayeue/pages/profile/profilepage.dart';
 import 'package:unicons/unicons.dart';
 
 class Navigationpage extends StatefulWidget {
-  Navigationpage({Key? key}) : super(key: key);
+  const Navigationpage({Key? key}) : super(key: key);
 
   @override
   State<Navigationpage> createState() => _NavigationpageState();
@@ -15,10 +15,10 @@ class Navigationpage extends StatefulWidget {
 class _NavigationpageState extends State<Navigationpage> {
   int _currentIndex = 0;
   List<Widget> pages = [
-    HomePage(),
-    History(),
-    Favorite(),
-    Profile(),
+    const HomePage(),
+    const History(),
+    const Favorite(),
+    const Profile(),
   ];
 
   @override
