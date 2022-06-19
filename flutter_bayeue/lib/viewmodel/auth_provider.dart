@@ -25,6 +25,8 @@ class AuthProvider with ChangeNotifier {
     phone,
     password,
   ) async {
-    await AuthApi.register(nama, email, phone, password);
+    print('object');
+    await AuthApi.register1(nama, email, phone, password);
+    print('object');
   }
 }

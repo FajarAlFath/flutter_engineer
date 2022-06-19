@@ -19,17 +19,40 @@ class AuthApi {
     }
   }
 
-  static register(nama, email, phone, password) async {
-    var formlogin = {
-      "name": nama,
-      "phone": phone,
-      "email": email,
-      "password": password,
+  static register1(nama, email, phone, password) async {
+    print(nama);
+    print(email);
+    print(password);
+    print(phone);
+    var formRegister = {
+      "Name": nama,
+      "Email": email,
+      "Password": password,
+      "Phone": phone
     };
+    print('object1');
+    try {
+      var dio = Dio();
+      var response =
+          await dio.post('http://3.0.50.89:19000/register', data: formRegister);
+      print(response.data.toString());
+    } catch (e) {
+      // return null;
+      print(e);
+    }
+  }
 
-    var dio = Dio();
-    var response =
-        await dio.post('http://3.0.50.89:19000/register', data: formlogin);
-    print(response.data.toString());
+  static validation(code) async {
+    var formValidation = {
+      "code": code,
+    };
+    try {
+      var dio = Dio();
+      var response = await dio.post('http://3.0.50.89:19000/validation',
+          data: formValidation);
+      print(response.data.toString());
+    } catch (e) {
+      return null;
+    }
   }
 }

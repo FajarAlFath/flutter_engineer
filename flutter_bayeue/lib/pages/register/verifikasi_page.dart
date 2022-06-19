@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bayeue/pages/home/home_page.dart';
 import 'package:flutter_bayeue/pages/register/create_pin.dart';
 
 class VerifikasiPage extends StatefulWidget {
@@ -100,7 +101,7 @@ class _VerifikasiPageState extends State<VerifikasiPage> {
                     onPressed: () {
                       Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
                         builder: (context) {
-                          return const CreatePinPage();
+                          return const HomePage();
                         },
                       ), (route) => false);
                     },

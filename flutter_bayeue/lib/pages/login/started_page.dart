@@ -29,12 +29,12 @@ class StartedPage extends StatelessWidget {
                             child: Image.asset('assets/images/Bayeue.png'),
                           ),
                           const SizedBox(
-                            height: 30,
+                            height: 60,
                           ),
-                          Center(
-                            child: SvgPicture.asset(
-                              'assets/started.svg',
-                              height: 300,
+                          const Center(
+                            child: Image(
+                              image: NetworkImage(
+                                  'https://cdn.discordapp.com/attachments/978656264051630082/985888007460642826/animation_300_l3srwcxx.gif'),
                             ),
                           ),
                           const SizedBox(

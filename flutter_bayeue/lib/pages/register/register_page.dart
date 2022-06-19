@@ -2,6 +2,8 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bayeue/pages/login/login_page.dart';
 import 'package:flutter_bayeue/pages/register/verifikasi_page.dart';
+import 'package:flutter_bayeue/viewmodel/auth_provider.dart';
+import 'package:provider/provider.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -23,6 +25,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(context);
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 240, 244, 247),
       body: SafeArea(
@@ -217,8 +220,15 @@ class _RegisterPageState extends State<RegisterPage> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15))),
                     onPressed: check == true
-                        ? (() {
+                        ? (() async {
                             if (fromKey.currentState!.validate()) {
+                              final response = await authProvider.register(
+                                  _nameController.text,
+                                  _emailController.text,
+                                  _noTelpController.text,
+                                  _passwordController.text);
+
+                              // ignore: use_build_context_synchronously
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(builder: (context) {
