@@ -61,7 +61,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     height: 20,
                   ),
                   TextFormField(
-                    controller: _emailController,
+                    controller: _nameController,
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Nama';
@@ -85,7 +85,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     height: 10,
                   ),
                   TextFormField(
-                    controller: _nameController,
+                    controller: _emailController,
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Masukan Email';
@@ -228,7 +228,6 @@ class _RegisterPageState extends State<RegisterPage> {
                                   _noTelpController.text,
                                   _passwordController.text);
 
-                              // ignore: use_build_context_synchronously
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(builder: (context) {

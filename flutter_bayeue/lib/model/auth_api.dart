@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 
 class AuthApi {
@@ -25,21 +27,17 @@ class AuthApi {
     print(password);
     print(phone);
     var formRegister = {
-      "Name": nama,
-      "Email": email,
-      "Password": password,
-      "Phone": phone
+      "name": nama,
+      "email": email,
+      "password": password,
+      "phone": phone
     };
     print('object1');
-    try {
-      var dio = Dio();
-      var response =
-          await dio.post('http://3.0.50.89:19000/register', data: formRegister);
-      print(response.data.toString());
-    } catch (e) {
-      // return null;
-      print(e);
-    }
+    print(formRegister);
+    var dio = Dio();
+    var response =
+        await dio.post('http://3.0.50.89:19000/register', data: formRegister);
+    print(response.data['data']);
   }
 
   static validation(code) async {

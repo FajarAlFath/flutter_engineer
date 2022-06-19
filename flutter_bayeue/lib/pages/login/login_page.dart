@@ -188,8 +188,8 @@ class _LoginPageState extends State<LoginPage> {
                                     borderRadius: BorderRadius.circular(20),
                                   ),
                                   child: Container(
-                                      margin:
-                                          EdgeInsets.symmetric(vertical: 15),
+                                      margin: const EdgeInsets.symmetric(
+                                          vertical: 15),
                                       padding: const EdgeInsets.all(10),
                                       height: 140,
                                       width: MediaQuery.of(context).size.width *

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bayeue/pages/login/login_page.dart';
 import 'package:flutter_bayeue/viewmodel/auth_provider.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 class StartedPage extends StatelessWidget {
@@ -31,11 +30,8 @@ class StartedPage extends StatelessWidget {
                           const SizedBox(
                             height: 60,
                           ),
-                          const Center(
-                            child: Image(
-                              image: NetworkImage(
-                                  'https://cdn.discordapp.com/attachments/978656264051630082/985888007460642826/animation_300_l3srwcxx.gif'),
-                            ),
+                          Center(
+                            child: Image.asset('assets/images/started.gif'),
                           ),
                           const SizedBox(
                             height: 50,

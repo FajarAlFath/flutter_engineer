@@ -29,4 +29,12 @@ class AuthProvider with ChangeNotifier {
     await AuthApi.register1(nama, email, phone, password);
     print('object');
   }
+
+  validation(
+    code,
+  ) async {
+    print('object');
+    await AuthApi.validation(code);
+    print('object');
+  }
 }
