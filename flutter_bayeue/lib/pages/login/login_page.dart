@@ -80,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
                       ),
-                      hintText: 'Masukan Email',
+                      hintText: 'Email',
                     ),
                   ),
                   const SizedBox(
@@ -92,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Masukan Password';
-                      } else if (value.length < 5) {
+                      } else if (value.length < 6) {
                         return 'Masukan minimal 6 karakter';
                       }
                       return null;
@@ -173,52 +173,53 @@ class _LoginPageState extends State<LoginPage> {
                             _emailController.text, _passwordController.text);
 
                         if (response == true) {
-                          // ignore: use_build_context_synchronously
                           Navigator.pushAndRemoveUntil(context,
                               MaterialPageRoute(builder: (ctx) {
                             return const Navigationpage();
                           }), (route) => false);
                         } else {
                           showDialog(
-                              context: context,
-                              builder: (ctx) {
-                                return Dialog(
-                                  backgroundColor: Colors.white,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20),
+                            context: context,
+                            builder: (ctx) {
+                              return Dialog(
+                                backgroundColor: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Container(
+                                  margin:
+                                      const EdgeInsets.symmetric(vertical: 15),
+                                  padding: const EdgeInsets.all(10),
+                                  height: 140,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.8,
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Image.asset(
+                                        'assets/images/notification.png',
+                                        height: 60,
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      const Text(
+                                        'Gagal Login!',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 20),
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                      const Text(
+                                          'Email dan Password Tidak Valid')
+                                    ],
                                   ),
-                                  child: Container(
-                                      margin: const EdgeInsets.symmetric(
-                                          vertical: 15),
-                                      padding: const EdgeInsets.all(10),
-                                      height: 140,
-                                      width: MediaQuery.of(context).size.width *
-                                          0.8,
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Image.asset(
-                                            'assets/images/notification.png',
-                                            height: 60,
-                                          ),
-                                          const SizedBox(
-                                            height: 10,
-                                          ),
-                                          const Text(
-                                            'Gagal Login!',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 20),
-                                          ),
-                                          const SizedBox(
-                                            height: 5,
-                                          ),
-                                          const Text(
-                                              'Email dan Password Tidak Valid')
-                                        ],
-                                      )),
-                                );
-                              });
+                                ),
+                              );
+                            },
+                          );
                         }
                       }
                     }),

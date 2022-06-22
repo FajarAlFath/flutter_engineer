@@ -1,7 +1,8 @@
-import 'package:dio/dio.dart';
+// import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bayeue/pages/home/home_page.dart';
-import 'package:flutter_bayeue/pages/register/create_pin.dart';
+import 'package:flutter_bayeue/pages/home/navigation_bar.dart';
+// import 'package:flutter_bayeue/pages/register/create_pin.dart';
 import 'package:flutter_bayeue/viewmodel/auth_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -109,12 +110,13 @@ class _VerifikasiPageState extends State<VerifikasiPage> {
                         if (fromKey.currentState!.validate()) {
                           final response = await authProvider
                               .validation(_otpController.text);
+                          Navigator.pushAndRemoveUntil(context,
+                              MaterialPageRoute(
+                            builder: (context) {
+                              return const Navigationpage();
+                            },
+                          ), (route) => false);
                         }
-                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
-                          builder: (context) {
-                            return const HomePage();
-                          },
-                        ), (route) => false);
                       },
                       style: ElevatedButton.styleFrom(
                         minimumSize: const Size(double.infinity, 50),
