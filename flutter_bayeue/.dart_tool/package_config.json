@@ -392,11 +392,7 @@
       "languageVersion": "2.17"
     }
   ],
-<<<<<<< HEAD
-  "generated": "2022-06-22T12:45:59.543630Z",
-=======
-  "generated": "2022-06-20T08:10:03.393525Z",
->>>>>>> profile
+  "generated": "2022-06-22T12:55:07.973228Z",
   "generator": "pub",
   "generatorVersion": "2.17.1"
 }
