@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bayeue/pages/login/login_page.dart';
 import 'package:flutter_bayeue/viewmodel/auth_provider.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 class StartedPage extends StatelessWidget {
@@ -29,13 +28,10 @@ class StartedPage extends StatelessWidget {
                             child: Image.asset('assets/images/Bayeue.png'),
                           ),
                           const SizedBox(
-                            height: 30,
+                            height: 60,
                           ),
                           Center(
-                            child: SvgPicture.asset(
-                              'assets/started.svg',
-                              height: 300,
-                            ),
+                            child: Image.asset('assets/images/started.gif'),
                           ),
                           const SizedBox(
                             height: 50,
