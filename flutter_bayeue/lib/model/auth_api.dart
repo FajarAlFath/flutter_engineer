@@ -49,4 +49,18 @@ class AuthApi {
       return null;
     }
   }
+
+  static pin(code) async {
+    var formValidation = {
+      "pin": pin,
+    };
+    try {
+      var dio = Dio();
+      var response = await dio.post('http://3.0.50.89:19000/users/pin',
+          data: formValidation);
+      return response;
+    } catch (e) {
+      return null;
+    }
+  }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bayeue/pages/home/navigation_bar.dart';
 
 class CreatePinPage extends StatefulWidget {
   const CreatePinPage({Key? key}) : super(key: key);
@@ -117,9 +118,12 @@ class _CreatePinPageState extends State<CreatePinPage> {
                   ),
                   onPressed: (() {
                     if (fromKey.currentState!.validate()) {
-                      // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context){
-                      //   return HomePage();
-                      // },), (route) => false);
+                      
+                      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
+                        builder: (context) {
+                          return Navigationpage();
+                        },
+                      ), (route) => false);
                     }
                   }),
                   child: const Text(
