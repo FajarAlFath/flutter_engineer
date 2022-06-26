@@ -11,18 +11,16 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 227, 244, 254),
+        toolbarHeight: kToolbarHeight * 1.5,
         elevation: 0,
-        title: const Padding(
-          padding: EdgeInsets.only(left: 18),
-          child: Text(
-            'Account',
-            style: TextStyle(
-                fontWeight: FontWeight.bold, fontSize: 26, color: Colors.black),
-          ),
+        title: const Text(
+          'Account',
+          style: TextStyle(
+              fontWeight: FontWeight.bold, fontSize: 26, color: Colors.black),
         ),
+        backgroundColor: const Color.fromARGB(255, 247, 240, 240),
       ),
-      backgroundColor: const Color.fromARGB(255, 227, 244, 254),
+      backgroundColor: const Color.fromARGB(255, 247, 240, 240),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
