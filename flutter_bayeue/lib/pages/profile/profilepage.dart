@@ -30,20 +30,21 @@ class Profile extends StatelessWidget {
             Row(
               children: [
                 Padding(
-                    padding: const EdgeInsets.only(left: 35),
-                    child: SizedBox(
-                      height: 80,
-                      width: 80,
-                      child: Container(
-                        decoration: BoxDecoration(
-                            image: const DecorationImage(
-                                fit: BoxFit.cover,
-                                image: NetworkImage(
-                                    'https://picsum.photos/id/870/200/300?grayscale&blur=2')),
-                            borderRadius: BorderRadius.circular(10),
-                            shape: BoxShape.rectangle),
-                      ),
-                    )),
+                  padding: const EdgeInsets.only(left: 35),
+                  child: SizedBox(
+                    height: 80,
+                    width: 80,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          image: const DecorationImage(
+                              fit: BoxFit.cover,
+                              image: NetworkImage(
+                                  'https://picsum.photos/id/870/200/300?grayscale&blur=2')),
+                          borderRadius: BorderRadius.circular(10),
+                          shape: BoxShape.rectangle),
+                    ),
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.only(left: 30),
                   child: Column(

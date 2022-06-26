@@ -107,7 +107,7 @@ class Favorite extends StatelessWidget {
                                           borderRadius:
                                               BorderRadius.circular(12))),
                                   onPressed: () {},
-                                  child: Text(
+                                  child: const Text(
                                     'SELECT',
                                     style: TextStyle(
                                       fontSize: 12,
@@ -217,7 +217,7 @@ class Favorite extends StatelessWidget {
                                           borderRadius:
                                               BorderRadius.circular(12))),
                                   onPressed: () {},
-                                  child: Text(
+                                  child: const Text(
                                     'SELECT',
                                     style: TextStyle(
                                       fontSize: 12,
@@ -330,7 +330,7 @@ class Favorite extends StatelessWidget {
                                           borderRadius:
                                               BorderRadius.circular(12))),
                                   onPressed: () {},
-                                  child: Text(
+                                  child: const Text(
                                     'SELECT',
                                     style: TextStyle(
                                       fontSize: 12,
