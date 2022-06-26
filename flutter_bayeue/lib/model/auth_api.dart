@@ -10,7 +10,7 @@ class AuthApi {
     try {
       var dio = Dio();
       var response =
-          await dio.post('http://3.0.50.89:19000/login', data: formlogin);
+          await dio.post('http://13.229.124.128:19000/login', data: formlogin);
       print(response.data);
 
       return response;
@@ -28,8 +28,8 @@ class AuthApi {
     };
     try {
       var dio = Dio();
-      var response =
-          await dio.post('http://3.0.50.89:19000/register', data: formRegister);
+      var response = await dio.post('http://13.229.124.128:19000/register',
+          data: formRegister);
       return response;
     } catch (e) {
       return null;
@@ -42,7 +42,7 @@ class AuthApi {
     };
     try {
       var dio = Dio();
-      var response = await dio.post('http://3.0.50.89:19000/validation',
+      var response = await dio.post('http://13.229.124.128:19000/validation',
           data: formValidation);
       return response;
     } catch (e) {
@@ -56,7 +56,7 @@ class AuthApi {
     };
     try {
       var dio = Dio();
-      var response = await dio.post('http://3.0.50.89:19000/users/pin',
+      var response = await dio.post('http://13.229.124.128:19000/users/pin',
           data: formValidation);
       return response;
     } catch (e) {

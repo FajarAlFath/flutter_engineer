@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bayeue/pages/profile/privacy_policy/privacy.dart';
+import 'package:flutter_bayeue/pages/profile/terms_conditions/terms_and_conditions_page.dart';
 import 'package:unicons/unicons.dart';
-
 import 'package:flutter_bayeue/pages/login/login_page.dart';
 
 class Profile extends StatelessWidget {
@@ -216,7 +216,12 @@ class Profile extends StatelessWidget {
               shadowColor: Colors.grey,
               child: InkWell(
                 splashColor: Colors.blue.withAlpha(50),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const TermsCondition()));
+                },
                 child: SizedBox(
                   height: 80,
                   width: 366,
@@ -260,7 +265,10 @@ class Profile extends StatelessWidget {
               shadowColor: Colors.grey,
               child: InkWell(
                 splashColor: Colors.blue.withAlpha(50),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const Privacy()));
+                },
                 child: SizedBox(
                   height: 80,
                   width: 366,
