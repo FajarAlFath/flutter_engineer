@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter_bayeue/model/auth_api.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthProvider with ChangeNotifier {
   bool firstTime = true;
@@ -13,6 +14,9 @@ class AuthProvider with ChangeNotifier {
   login(email, password) async {
     var response = await AuthApi.login(email, password);
     if (response != null) {
+      SharedPreferences sp = await SharedPreferences.getInstance();
+      sp.setString("token", response.data!.token!);
+
       return true;
     } else {
       return false;

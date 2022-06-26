@@ -213,7 +213,7 @@ class _LoginPageState extends State<LoginPage> {
                                         height: 5,
                                       ),
                                       const Text(
-                                          'Email dan Password Tidak Valid')
+                                          'Email dan Password Tidak Valid'),
                                     ],
                                   ),
                                 ),
