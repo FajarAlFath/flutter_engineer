@@ -12,7 +12,6 @@ class AuthApi {
       var response =
           await dio.post('http://3.0.50.89:19000/login', data: formlogin);
       print(response.data);
-      var a = LoginModel.fromJson(response.data);
 
       return LoginModel.fromJson(response.data);
     } catch (e) {

@@ -35,6 +35,11 @@ class AuthProvider with ChangeNotifier {
   validation(
     code,
   ) async {
-    await AuthApi.validation(code);
+    var response = await AuthApi.validation(code);
+    if (response != null) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
