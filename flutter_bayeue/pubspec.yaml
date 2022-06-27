@@ -39,9 +39,9 @@ dependencies:
   shared_preferences: ^2.0.15
   flutter_svg: ^1.1.0
   unicons: any
-
   dio: ^4.0.6
   email_validator: ^2.0.1
+  intl: ^0.17.0
 
 
 flutter_native_splash:

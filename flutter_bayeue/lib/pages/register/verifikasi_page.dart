@@ -1,8 +1,7 @@
 // import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter_bayeue/pages/home/navigation_bar.dart';
-import 'package:flutter_bayeue/pages/register/create_pin.dart';
+import 'package:flutter_bayeue/pages/login/login_page.dart';
 // import 'package:flutter_bayeue/pages/register/create_pin.dart';
 import 'package:flutter_bayeue/viewmodel/auth_provider.dart';
 import 'package:provider/provider.dart';
@@ -107,31 +106,101 @@ class _VerifikasiPageState extends State<VerifikasiPage> {
                       height: 100,
                     ),
                     ElevatedButton(
-                      onPressed: () async {
-                        if (fromKey.currentState!.validate()) {
-                          final response = await authProvider
-                              .validation(_otpController.text);
-                          Navigator.pushAndRemoveUntil(context,
-                              MaterialPageRoute(
-                            builder: (context) {
-                              return const CreatePinPage();
-                            },
-                          ), (route) => false);
-                        }
-                      },
                       style: ElevatedButton.styleFrom(
                         minimumSize: const Size(double.infinity, 50),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15),
                         ),
                       ),
+                      onPressed: (() async {
+                        if (fromKey.currentState!.validate()) {
+                          bool response = await authProvider
+                              .validation(_otpController.text);
+
+                          if (response == true) {
+                            Navigator.pushAndRemoveUntil(context,
+                                MaterialPageRoute(builder: (ctx) {
+                              return const LoginPage();
+                            }), (route) => false);
+                          } else {
+                            showDialog(
+                              context: context,
+                              builder: (ctx) {
+                                return Dialog(
+                                  backgroundColor: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Container(
+                                    margin: const EdgeInsets.symmetric(
+                                        vertical: 15),
+                                    padding: const EdgeInsets.all(10),
+                                    height: 140,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.8,
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Image.asset(
+                                          'assets/images/notification.png',
+                                          height: 60,
+                                        ),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        const Text(
+                                          'Gagal Verifikasi',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 20),
+                                        ),
+                                        const SizedBox(
+                                          height: 5,
+                                        ),
+                                        const Text('OTP Tidak Valid'),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
+                          }
+                        }
+                      }),
                       child: const Text(
                         'Verifikasi',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
+                          fontSize: 20,
                         ),
                       ),
                     ),
+                    // ElevatedButton(
+                    //   onPressed: () async {
+                    //     if (fromKey.currentState!.validate()) {
+                    //       final response = await authProvider
+                    //           .validation(_otpController.text);
+                    //       Navigator.pushAndRemoveUntil(context,
+                    //           MaterialPageRoute(
+                    //         builder: (context) {
+                    //           return const CreatePinPage();
+                    //         },
+                    //       ), (route) => false);
+                    //     }
+                    //   },
+                    //   style: ElevatedButton.styleFrom(
+                    //     minimumSize: const Size(double.infinity, 50),
+                    //     shape: RoundedRectangleBorder(
+                    //       borderRadius: BorderRadius.circular(15),
+                    //     ),
+                    //   ),
+                    //   child: const Text(
+                    //     'Verifikasi',
+                    //     style: TextStyle(
+                    //       fontWeight: FontWeight.bold,
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
               ),

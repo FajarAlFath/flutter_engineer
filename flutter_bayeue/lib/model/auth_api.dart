@@ -1,19 +1,19 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_bayeue/model/login_model.dart';
 
 class AuthApi {
-  static login(email, password) async {
-    var formlogin = {
-      "Email": email,
-      "Password": password,
-    };
-
+  static Future<LoginModel?> login(email, password) async {
     try {
+      var formlogin = {
+        "Email": email,
+        "Password": password,
+      };
       var dio = Dio();
       var response =
           await dio.post('http://13.229.124.128:19000/login', data: formlogin);
       print(response.data);
 
-      return response;
+      return LoginModel.fromJson(response.data);
     } catch (e) {
       return null;
     }
