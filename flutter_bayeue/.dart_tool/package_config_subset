@@ -46,6 +46,10 @@ dio
 2.12
 file:///home/alfath/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/dio-4.0.6/
 file:///home/alfath/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/dio-4.0.6/lib/
+email_validator
+2.12
+file:///home/alfath/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/email_validator-2.0.1/
+file:///home/alfath/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/email_validator-2.0.1/lib/
 fake_async
 2.12
 file:///home/alfath/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/fake_async-1.3.0/
@@ -78,6 +82,10 @@ image
 2.15
 file:///home/alfath/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/image-3.2.0/
 file:///home/alfath/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/image-3.2.0/lib/
+intl
+2.12
+file:///home/alfath/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/intl-0.17.0/
+file:///home/alfath/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/intl-0.17.0/lib/
 js
 2.16
 file:///home/alfath/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/js-0.6.4/

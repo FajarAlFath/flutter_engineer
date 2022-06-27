@@ -9,12 +9,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var _curentIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 227, 244, 254),
+      backgroundColor: const Color.fromARGB(255, 247, 240, 240),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -67,14 +65,17 @@ class _HomePageState extends State<HomePage> {
               Stack(
                 alignment: AlignmentDirectional.center,
                 children: [
-                  Image.asset('assets/images/home.png'),
+                  Image.asset('assets/images/home2.png'),
                   Positioned(
-                    top: 20,
-                    right: 30,
-                    child: Image.asset('assets/images/dihome.png'),
+                    top: 12,
+                    right: 24,
+                    child: Image.asset(
+                      'assets/images/dihome.png',
+                      fit: BoxFit.fill,
+                    ),
                   ),
                   const Positioned(
-                    top: 30,
+                    top: 20,
                     left: 30,
                     child: Text(
                       'Phone Number',
@@ -82,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   const Positioned(
-                    top: 60,
+                    top: 50,
                     left: 30,
                     child: Text(
                       '0899 3453 4534',
@@ -93,7 +94,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   const Positioned(
-                    top: 90,
+                    top: 85,
                     left: 30,
                     child: Text(
                       'Current Balance',
@@ -101,7 +102,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   const Positioned(
-                    top: 120,
+                    top: 115,
                     left: 30,
                     child: Text(
                       'Rp. 123456',
@@ -113,9 +114,10 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-              const Padding(
-                padding: EdgeInsets.only(right: 300),
-                child: Text(
+              Container(
+                margin: const EdgeInsets.only(top: 16),
+                padding: const EdgeInsets.only(right: 300),
+                child: const Text(
                   'Feature',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
@@ -252,7 +254,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(10),
                       color: Colors.white,
                     ),
                     child: Column(
@@ -261,22 +263,15 @@ class _HomePageState extends State<HomePage> {
                           onTap: () {
                             print('object');
                           },
-                          child: Container(
+                          child: SizedBox(
                             height: 100,
-                            width: 150,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.shade300,
-                                    blurRadius: 20,
-                                    spreadRadius: 2,
-                                  )
-                                ]),
-                            child: Image.network(
-                              'https://picsum.photos/id/870/200/300?grayscale&blur=2',
-                              fit: BoxFit.cover,
+                            width: 180,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: Image.network(
+                                'https://picsum.photos/id/870/200/300?grayscale&blur=2',
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ),
@@ -297,7 +292,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(10),
                       color: Colors.white,
                     ),
                     child: Column(
@@ -306,22 +301,15 @@ class _HomePageState extends State<HomePage> {
                           onTap: () {
                             print('object');
                           },
-                          child: Container(
+                          child: SizedBox(
                             height: 100,
-                            width: 150,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.shade300,
-                                    blurRadius: 20,
-                                    spreadRadius: 2,
-                                  )
-                                ]),
-                            child: Image.network(
-                              'https://picsum.photos/id/870/200/300?grayscale&blur=2',
-                              fit: BoxFit.cover,
+                            width: 180,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: Image.network(
+                                'https://picsum.photos/id/870/200/300?grayscale&blur=2',
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ),
