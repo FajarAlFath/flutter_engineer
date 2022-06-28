@@ -37,9 +37,10 @@ class Profile extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                           image: const DecorationImage(
-                              fit: BoxFit.cover,
-                              image: NetworkImage(
-                                  'https://picsum.photos/id/870/200/300?grayscale&blur=2')),
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                                'https://picsum.photos/id/870/200/300?grayscale&blur=2'),
+                          ),
                           borderRadius: BorderRadius.circular(10),
                           shape: BoxShape.rectangle),
                     ),
