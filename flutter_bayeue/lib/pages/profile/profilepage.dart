@@ -12,7 +12,7 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 227, 244, 254),
+        toolbarHeight: kToolbarHeight * 1.5,
         elevation: 0,
         title: Padding(
           padding: const EdgeInsets.only(left: 18),
@@ -25,7 +25,7 @@ class Profile extends StatelessWidget {
           ),
         ),
       ),
-      backgroundColor: const Color.fromARGB(255, 227, 244, 254),
+      backgroundColor: const Color.fromARGB(255, 247, 240, 240),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -35,20 +35,22 @@ class Profile extends StatelessWidget {
             Row(
               children: [
                 Padding(
-                    padding: const EdgeInsets.only(left: 35),
-                    child: SizedBox(
-                      height: 80,
-                      width: 80,
-                      child: Container(
-                        decoration: BoxDecoration(
-                            image: const DecorationImage(
-                                fit: BoxFit.cover,
-                                image: NetworkImage(
-                                    'https://picsum.photos/id/870/200/300?grayscale&blur=2')),
-                            borderRadius: BorderRadius.circular(10),
-                            shape: BoxShape.rectangle),
-                      ),
-                    )),
+                  padding: const EdgeInsets.only(left: 35),
+                  child: SizedBox(
+                    height: 80,
+                    width: 80,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          image: const DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                                'https://picsum.photos/id/870/200/300?grayscale&blur=2'),
+                          ),
+                          borderRadius: BorderRadius.circular(10),
+                          shape: BoxShape.rectangle),
+                    ),
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.only(left: 30),
                   child: Column(
