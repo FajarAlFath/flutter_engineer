@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
-
-import 'package:flutter_bayeue/model/auth_api.dart';
+import 'package:flutter_bayeue/model/api/auth_api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthProvider with ChangeNotifier {
