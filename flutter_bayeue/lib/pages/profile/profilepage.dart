@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bayeue/pages/profile/privacy_policy/privacy.dart';
+import 'package:flutter_bayeue/pages/profile/setting/setting.dart';
 import 'package:flutter_bayeue/pages/profile/terms_conditions/terms_and_conditions_page.dart';
 import 'package:unicons/unicons.dart';
 import 'package:flutter_bayeue/pages/login/login_page.dart';
@@ -13,12 +14,16 @@ class Profile extends StatelessWidget {
       appBar: AppBar(
         toolbarHeight: kToolbarHeight * 1.5,
         elevation: 0,
-        title: const Text(
-          'Account',
-          style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 26, color: Colors.black),
+        title: Padding(
+          padding: const EdgeInsets.only(left: 18),
+          child: Text(
+            'Account',
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 26,
+                color: Colors.black.withOpacity(0.8)),
+          ),
         ),
-        backgroundColor: const Color.fromARGB(255, 247, 240, 240),
       ),
       backgroundColor: const Color.fromARGB(255, 247, 240, 240),
       body: SingleChildScrollView(
@@ -37,9 +42,10 @@ class Profile extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                           image: const DecorationImage(
-                              fit: BoxFit.cover,
-                              image: NetworkImage(
-                                  'https://picsum.photos/id/870/200/300?grayscale&blur=2')),
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                                'https://picsum.photos/id/870/200/300?grayscale&blur=2'),
+                          ),
                           borderRadius: BorderRadius.circular(10),
                           shape: BoxShape.rectangle),
                     ),
@@ -127,7 +133,10 @@ class Profile extends StatelessWidget {
               shadowColor: Colors.grey,
               child: InkWell(
                 splashColor: Colors.blue.withAlpha(50),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const Setting()));
+                },
                 child: SizedBox(
                   height: 80,
                   width: 366,
