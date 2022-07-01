@@ -180,6 +180,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/produk/
+    - assets/promo/
 
   #   - images/a_dot_ham.jpeg
 
