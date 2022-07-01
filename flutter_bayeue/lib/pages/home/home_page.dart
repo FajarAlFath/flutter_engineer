@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bayeue/pages/home/feature/payment/payment_page.dart';
+import 'package:flutter_bayeue/pages/home/feature/top%20up/top_up_page.dart';
+import 'package:flutter_bayeue/pages/home/promo/promo1.dart';
+import 'package:flutter_bayeue/pages/home/promo/promo2.dart';
 import 'package:unicons/unicons.dart';
 
 class HomePage extends StatefulWidget {
@@ -166,7 +170,12 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       InkWell(
                         onTap: () {
-                          print('object');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (ctx) {
+                              return const TopUpPage();
+                            }),
+                          );
                         },
                         child: Container(
                           padding: const EdgeInsets.all(20),
@@ -204,7 +213,12 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       InkWell(
                         onTap: () {
-                          print('object');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (ctx) {
+                              return PaymentPage();
+                            }),
+                          );
                         },
                         child: Container(
                           padding: const EdgeInsets.all(20),
@@ -237,17 +251,17 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
               const SizedBox(
-                height: 20,
+                height: 24,
               ),
               const Padding(
-                padding: EdgeInsets.only(right: 150),
+                padding: EdgeInsets.only(right: 168),
                 child: Text(
                   'Info and Special Promo',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 24,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -261,15 +275,22 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         InkWell(
                           onTap: () {
-                            print('object');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (ctx) {
+                                  return const Promo1();
+                                },
+                              ),
+                            );
                           },
                           child: SizedBox(
                             height: 100,
                             width: 180,
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
-                              child: Image.network(
-                                'https://picsum.photos/id/870/200/300?grayscale&blur=2',
+                              child: Image.asset(
+                                'assets/promo/promo1.png',
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -299,15 +320,22 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         InkWell(
                           onTap: () {
-                            print('object');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (ctx) {
+                                  return const Promo2();
+                                },
+                              ),
+                            );
                           },
                           child: SizedBox(
                             height: 100,
                             width: 180,
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
-                              child: Image.network(
-                                'https://picsum.photos/id/870/200/300?grayscale&blur=2',
+                              child: Image.asset(
+                                'assets/promo/promo2.png',
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -317,12 +345,12 @@ class _HomePageState extends State<HomePage> {
                           height: 10,
                         ),
                         const Text(
-                          'Shopping for Vegetables',
+                          'Buy Cinema Tickets',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 16),
                         ),
                         const Text(
-                          'To get 25% cashback',
+                          'To get 15% off',
                           style: TextStyle(fontSize: 13),
                         ),
                       ],
