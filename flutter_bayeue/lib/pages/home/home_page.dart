@@ -297,16 +297,24 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         const SizedBox(
-                          height: 10,
+                          height: 5,
                         ),
-                        const Text(
-                          'Shopping for Vegetables',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                        const Text(
-                          'To get 25% cashback',
-                          style: TextStyle(fontSize: 13),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            Text(
+                              'Shopping for Vegetables',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 16),
+                            ),
+                            Text(
+                              'To get 25% cashback',
+                              style: TextStyle(fontSize: 13),
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                          ],
                         ),
                       ],
                     ),
@@ -342,16 +350,24 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         const SizedBox(
-                          height: 10,
+                          height: 5,
                         ),
-                        const Text(
-                          'Buy Cinema Tickets',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                        const Text(
-                          'To get 15% off',
-                          style: TextStyle(fontSize: 13),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            Text(
+                              'Buy Cinema Tickets',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 16),
+                            ),
+                            Text(
+                              'To get 15% off',
+                              style: TextStyle(fontSize: 13),
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                          ],
                         ),
                       ],
                     ),

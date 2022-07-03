@@ -1,5 +1,6 @@
 // import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bayeue/pages/home/navigation_bar.dart';
 
 import 'package:flutter_bayeue/pages/login/login_page.dart';
 // import 'package:flutter_bayeue/pages/register/create_pin.dart';
@@ -120,7 +121,7 @@ class _VerifikasiPageState extends State<VerifikasiPage> {
                           if (response == true) {
                             Navigator.pushAndRemoveUntil(context,
                                 MaterialPageRoute(builder: (ctx) {
-                              return const LoginPage();
+                              return const Navigationpage();
                             }), (route) => false);
                           } else {
                             showDialog(

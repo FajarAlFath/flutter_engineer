@@ -1,13 +1,43 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bayeue/model/api/auth_api.dart';
+import 'package:flutter_bayeue/model/storage/local_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthProvider with ChangeNotifier {
   bool firstTime = true;
+  bool isLogin = false;
 
-  void getStarted() {
-    firstTime = false;
+  AuthProvider() {
+    getData();
+    init();
+  }
+
+  getData() async {
+    SharedPreferences sp = await SharedPreferences.getInstance();
+    firstTime = sp.getBool('firstime')!;
     notifyListeners();
+  }
+
+  void getStarted() async {
+    firstTime = false;
+    SharedPreferences sp = await SharedPreferences.getInstance();
+    sp.setBool('firstime', firstTime);
+    notifyListeners();
+  }
+
+  init() async {
+    var data = await LocalStorage.getLoginData();
+    if (data != null) {
+      login(data['email'], data['password']);
+      isLogin = true;
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future logOut() async {
+    await LocalStorage.clearLoginData();
   }
 
   login(email, password) async {
@@ -15,7 +45,7 @@ class AuthProvider with ChangeNotifier {
     if (response != null) {
       SharedPreferences sp = await SharedPreferences.getInstance();
       sp.setString("token", response.data!.token!);
-
+      LocalStorage.setLoginData(email: email, password: password);
       return true;
     } else {
       return false;

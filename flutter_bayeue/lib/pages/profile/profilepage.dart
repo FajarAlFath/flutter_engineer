@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bayeue/pages/profile/privacy_policy/privacy.dart';
 import 'package:flutter_bayeue/pages/profile/terms_conditions/terms_and_conditions_page.dart';
+import 'package:flutter_bayeue/viewmodel/auth_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:unicons/unicons.dart';
 import 'package:flutter_bayeue/pages/login/login_page.dart';
 
@@ -9,6 +11,8 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var authProvider = Provider.of<AuthProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: kToolbarHeight * 1.5,
@@ -313,7 +317,8 @@ class Profile extends StatelessWidget {
               color: const Color.fromRGBO(58, 162, 220, 1),
               child: InkWell(
                 splashColor: Colors.blue.withAlpha(50),
-                onTap: () {
+                onTap: () async {
+                  await authProvider.logOut();
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(

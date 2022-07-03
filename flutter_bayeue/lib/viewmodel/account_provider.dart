@@ -10,3 +10,5 @@ class AccountProvider with ChangeNotifier {
     notifyListeners();
   }
 }
+
+class Account {}
