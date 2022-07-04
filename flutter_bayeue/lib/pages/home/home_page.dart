@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bayeue/viewmodel/category_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:unicons/unicons.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,6 +13,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    // final category = Provider.of<CategoryProvider>(context);
+
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 247, 240, 240),
       body: SafeArea(
@@ -86,7 +90,7 @@ class _HomePageState extends State<HomePage> {
                     top: 50,
                     left: 30,
                     child: Text(
-                      '0899 3453 4534',
+                      '08023840238402',
                       style: TextStyle(
                           fontSize: 18,
                           color: Colors.white,
@@ -125,117 +129,13 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 height: 10,
               ),
+
+              //Feature Display category product
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          print('object');
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  blurRadius: 20,
-                                  spreadRadius: 2,
-                                )
-                              ]),
-                          child: Image.asset(
-                            'assets/images/Outline.png',
-                            color: Colors.blue,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const Text(
-                        'Transfer',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          print('object');
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  blurRadius: 20,
-                                  spreadRadius: 2,
-                                )
-                              ]),
-                          child: Column(
-                            children: [
-                              Image.asset(
-                                'assets/images/trx.png',
-                                color: Colors.blue,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const Text(
-                        'Top Up',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          print('object');
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  blurRadius: 20,
-                                  spreadRadius: 2,
-                                )
-                              ]),
-                          child: Image.asset(
-                            'assets/images/bill.png',
-                            color: Colors.blue,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const Text(
-                        'Payment',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
-                      ),
-                    ],
-                  ),
-                ],
+                children: const [Text('data')],
               ),
+              //End of Display category product
+
               const SizedBox(
                 height: 20,
               ),

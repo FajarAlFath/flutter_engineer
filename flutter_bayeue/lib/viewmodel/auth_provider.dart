@@ -1,8 +1,5 @@
 import 'package:flutter/cupertino.dart';
-<<<<<<< HEAD
 import 'package:flutter_bayeue/model/api/auth_api.dart';
-=======
->>>>>>> 80679bf7c7730e82337ec4e04047fe6ebba61091
 import 'package:shared_preferences/shared_preferences.dart';
 import '../model/api/auth_api.dart';
 

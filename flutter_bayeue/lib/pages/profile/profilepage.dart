@@ -13,16 +13,14 @@ class Profile extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: kToolbarHeight * 1.5,
+        backgroundColor: const Color.fromARGB(255, 247, 240, 240),
         elevation: 0,
-        title: Padding(
-          padding: const EdgeInsets.only(left: 18),
-          child: Text(
-            'Account',
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 26,
-                color: Colors.black.withOpacity(0.8)),
-          ),
+        title: Text(
+          'Account',
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 26,
+              color: Colors.black.withOpacity(0.8)),
         ),
       ),
       backgroundColor: const Color.fromARGB(255, 247, 240, 240),
