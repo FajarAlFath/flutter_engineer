@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bayeue/pages/profile/privacy_policy/privacy.dart';
+import 'package:flutter_bayeue/pages/profile/setting/setting.dart';
 import 'package:flutter_bayeue/pages/profile/terms_conditions/terms_and_conditions_page.dart';
 import 'package:unicons/unicons.dart';
 import 'package:flutter_bayeue/pages/login/login_page.dart';
@@ -12,13 +13,15 @@ class Profile extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: kToolbarHeight * 1.5,
+        backgroundColor: const Color.fromARGB(255, 247, 240, 240),
         elevation: 0,
-        title: const Text(
+        title: Text(
           'Account',
           style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 26, color: Colors.black),
+              fontWeight: FontWeight.bold,
+              fontSize: 26,
+              color: Colors.black.withOpacity(0.8)),
         ),
-        backgroundColor: const Color.fromARGB(255, 247, 240, 240),
       ),
       backgroundColor: const Color.fromARGB(255, 247, 240, 240),
       body: SingleChildScrollView(
@@ -128,7 +131,10 @@ class Profile extends StatelessWidget {
               shadowColor: Colors.grey,
               child: InkWell(
                 splashColor: Colors.blue.withAlpha(50),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const Setting()));
+                },
                 child: SizedBox(
                   height: 80,
                   width: 366,
