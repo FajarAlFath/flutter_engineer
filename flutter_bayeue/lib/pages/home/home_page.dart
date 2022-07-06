@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bayeue/viewmodel/category_provider.dart';
+import 'package:flutter_bayeue/model/api/profile_api.dart';
+import 'package:flutter_bayeue/model/response_profile_model.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:unicons/unicons.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,6 +13,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  AccountModel? accountModel;
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      getProfileApi();
+    });
+  }
+
+  String name = '';
+
+  void getProfileApi() async {
+    accountModel = await ProfileApi.getResult();
+    setState(() {});
+    // accountModel = await ProfileApi.getResult();
+  }
+
   @override
   Widget build(BuildContext context) {
     // final category = Provider.of<CategoryProvider>(context);
@@ -30,19 +49,21 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
-                      children: const [
-                        CircleAvatar(
+                      children: [
+                        const CircleAvatar(
                           radius: 25,
                           backgroundImage: NetworkImage(
                               'https://picsum.photos/id/870/200/300?grayscale&blur=2'),
                         ),
                         Text(
-                          '  Hallo',
+                          ' Hallo',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 26),
                         ),
                         Text(
-                          ' Udin!',
+                          accountModel != null
+                              ? ' ${accountModel!.result!.user!.name!}'
+                              : '',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 26),
                         ),

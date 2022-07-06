@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_bayeue/model/login_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthApi {
   static Future<LoginModel?> login(email, password) async {
@@ -12,8 +13,12 @@ class AuthApi {
       var response =
           await dio.post('http://13.229.124.128:19000/login', data: formlogin);
       print(response.data);
+      var loginModel = LoginModel.fromJson(response.data);
 
-      return LoginModel.fromJson(response.data);
+      SharedPreferences sp = await SharedPreferences.getInstance();
+      var token = sp.setString("token", loginModel.data!.token.toString());
+
+      return loginModel;
     } catch (e) {
       return null;
     }

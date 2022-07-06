@@ -3,7 +3,7 @@ import 'package:flutter_bayeue/model/response_profile_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileApi {
-  static Future<AccountModel> getResult(int id) async {
+  static Future<AccountModel> getResult() async {
     try {
       SharedPreferences sp = await SharedPreferences.getInstance();
       var token = sp.getString("token");

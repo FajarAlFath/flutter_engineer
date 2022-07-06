@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bayeue/model/api/category_api.dart';
 import 'package:flutter_bayeue/model/response_category.dart';
-import 'package:flutter_bayeue/viewmodel/category_provider.dart';
-import 'package:provider/provider.dart';
 import 'package:unicons/unicons.dart';
 
 class Setting extends StatefulWidget {
