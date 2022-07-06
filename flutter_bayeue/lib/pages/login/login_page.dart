@@ -15,19 +15,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-  //     var response =
-  //         await Provider.of<AuthProvider>(context, listen: false).init();
-  //     if (response == true) {
-  //       Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (ctx) {
-  //         return const Navigationpage();
-  //       }), (route) => false);
-  //     }
-  //   });
-  // }
+  
 
   final fromKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();

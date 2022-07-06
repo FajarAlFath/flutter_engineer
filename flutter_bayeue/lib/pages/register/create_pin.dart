@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bayeue/pages/home/navigation_bar.dart';
+import 'package:flutter_bayeue/pages/login/login_page.dart';
+import 'package:flutter_bayeue/viewmodel/auth_provider.dart';
+import 'package:provider/provider.dart';
 
 class CreatePinPage extends StatefulWidget {
   const CreatePinPage({Key? key}) : super(key: key);
@@ -15,6 +18,7 @@ class _CreatePinPageState extends State<CreatePinPage> {
 
   @override
   Widget build(BuildContext context) {
+    final authprovider = Provider.of<AuthProvider>(context);
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 240, 244, 247),
       body: SafeArea(
@@ -116,13 +120,18 @@ class _CreatePinPageState extends State<CreatePinPage> {
                       borderRadius: BorderRadius.circular(15),
                     ),
                   ),
-                  onPressed: (() {
+                  onPressed: (() async {
                     if (fromKey.currentState!.validate()) {
-                      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
-                        builder: (context) {
-                          return const Navigationpage();
-                        },
-                      ), (route) => false);
+                      bool response = await authprovider
+                          .validation(_pinconfirmController.text);
+
+                      if (response == true) {
+                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const LoginPage();
+                          },
+                        ), (route) => false);
+                      }
                     }
                   }),
                   child: const Text(

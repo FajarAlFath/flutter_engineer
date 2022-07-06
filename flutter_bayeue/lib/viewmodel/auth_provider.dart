@@ -36,10 +36,6 @@ class AuthProvider with ChangeNotifier {
     }
   }
 
-  Future logOut() async {
-    await LocalStorage.clearLoginData();
-  }
-
   login(email, password) async {
     var response = await AuthApi.login(email, password);
     if (response != null) {
@@ -61,10 +57,25 @@ class AuthProvider with ChangeNotifier {
     await AuthApi.register(nama, email, phone, password);
   }
 
+  Future logOut() async {
+    await LocalStorage.clearLoginData();
+  }
+
   validation(
     code,
   ) async {
     var response = await AuthApi.validation(code);
+    if (response != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  pin(
+    pin,
+  ) async {
+    var response = await AuthApi.pin(pin);
     if (response != null) {
       return true;
     } else {

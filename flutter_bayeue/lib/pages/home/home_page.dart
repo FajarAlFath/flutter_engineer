@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bayeue/pages/home/feature/payment/payment_page.dart';
 import 'package:flutter_bayeue/pages/home/feature/top%20up/top_up_page.dart';
+import 'package:flutter_bayeue/pages/home/feature/transfer/transfer_page.dart';
 import 'package:flutter_bayeue/pages/home/promo/promo1.dart';
 import 'package:flutter_bayeue/pages/home/promo/promo2.dart';
 import 'package:unicons/unicons.dart';
@@ -22,7 +23,7 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               const SizedBox(
-                height: 20,
+                height: 24,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -30,21 +31,33 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
-                      children: const [
-                        CircleAvatar(
-                          radius: 25,
-                          backgroundImage: NetworkImage(
-                              'https://picsum.photos/id/870/200/300?grayscale&blur=2'),
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8),
+                          child: SizedBox(
+                            height: 50,
+                            width: 50,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  image: const DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: NetworkImage(
+                                        'https://picsum.photos/id/870/200/300?grayscale&blur=2'),
+                                  ),
+                                  borderRadius: BorderRadius.circular(10),
+                                  shape: BoxShape.rectangle),
+                            ),
+                          ),
                         ),
-                        Text(
+                        const Text(
                           '  Hallo',
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 26),
+                              fontWeight: FontWeight.bold, fontSize: 24),
                         ),
-                        Text(
+                        const Text(
                           ' Udin!',
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 26),
+                              fontWeight: FontWeight.bold, fontSize: 24),
                         ),
                       ],
                     ),
@@ -64,7 +77,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               Stack(
                 alignment: AlignmentDirectional.center,
@@ -90,7 +103,7 @@ class _HomePageState extends State<HomePage> {
                     top: 50,
                     left: 30,
                     child: Text(
-                      '0899 3453 4534',
+                      '085260063022',
                       style: TextStyle(
                           fontSize: 18,
                           color: Colors.white,
@@ -136,7 +149,14 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       InkWell(
                         onTap: () {
-                          print('object');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (ctx) {
+                                return TransferPage();
+                              },
+                            ),
+                          );
                         },
                         child: Container(
                           padding: const EdgeInsets.all(20),
@@ -253,9 +273,9 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 height: 24,
               ),
-              const Padding(
-                padding: EdgeInsets.only(right: 168),
-                child: Text(
+              Container(
+                padding: const EdgeInsets.only(right: 160),
+                child: const Text(
                   'Info and Special Promo',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),

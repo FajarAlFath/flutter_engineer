@@ -311,7 +311,8 @@ class Profile extends StatelessWidget {
             ),
             Card(
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
+                borderRadius: BorderRadius.circular(10),
+              ),
               elevation: 5,
               shadowColor: Colors.black,
               color: const Color.fromRGBO(58, 162, 220, 1),
@@ -320,10 +321,11 @@ class Profile extends StatelessWidget {
                 onTap: () async {
                   await authProvider.logOut();
                   Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => const LoginPage(),
-                      ));
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const LoginPage(),
+                    ),
+                  );
                 },
                 child: SizedBox(
                   height: 60,
