@@ -51,23 +51,24 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Row(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 8),
-                          child: SizedBox(
-                            height: 50,
-                            width: 50,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  image: const DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: NetworkImage(
-                                        'https://picsum.photos/id/870/200/300?grayscale&blur=2'),
-                                  ),
-                                  borderRadius: BorderRadius.circular(10),
-                                  shape: BoxShape.rectangle),
+                        if (accountModel != null)
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8),
+                            child: SizedBox(
+                              height: 50,
+                              width: 50,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      fit: BoxFit.fill,
+                                      image: NetworkImage(
+                                          accountModel!.result!.user!.image!),
+                                    ),
+                                    borderRadius: BorderRadius.circular(10),
+                                    shape: BoxShape.rectangle),
+                              ),
                             ),
                           ),
-                        ),
                         const Text(
                           '  Hallo',
                           style: TextStyle(
@@ -125,7 +126,7 @@ class _HomePageState extends State<HomePage> {
                     left: 30,
                     child: Text(
                       accountModel != null
-                          ? ' ${accountModel!.result!.user!.phone}'
+                          ? '${accountModel!.result!.user!.phone}'
                           : '',
                       style: const TextStyle(
                           fontSize: 18,
@@ -154,10 +155,10 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Positioned(
                     top: 115,
-                    left: 40,
+                    left: 60,
                     child: Text(
                       accountModel != null
-                          ? ' ${accountModel!.result!.user!.name!}'
+                          ? ' ${accountModel!.result!.account!.saldo}'
                           : '',
                       style: const TextStyle(
                           fontSize: 18,

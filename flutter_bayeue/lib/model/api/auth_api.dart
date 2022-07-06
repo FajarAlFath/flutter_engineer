@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_bayeue/model/api/services.dart';
 import 'package:flutter_bayeue/model/login_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -10,8 +11,7 @@ class AuthApi {
         "Password": password,
       };
       var dio = Dio();
-      var response =
-          await dio.post('http://13.229.124.128:19000/login', data: formlogin);
+      var response = await dio.post('${Url.baseUrl}/login', data: formlogin);
       print(response.data);
       var loginModel = LoginModel.fromJson(response.data);
 

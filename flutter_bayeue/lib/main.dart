@@ -15,21 +15,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-<<<<<<< HEAD
-      providers: [
-        ChangeNotifierProvider(
-          create: (_) => AuthProvider(),
-        ),
-        // ChangeNotifierProvider(
-        //   create: (_) => CategoryProvider(),
-        // ),
-      ],
-      builder: (context, child) => const MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Navigationpage(),
-      ),
-    );
-=======
         providers: [
           ChangeNotifierProvider(
             create: (_) => AuthProvider(),
@@ -46,6 +31,5 @@ class MyApp extends StatelessWidget {
                     : const Navigationpage(),
           );
         });
->>>>>>> 7a412ffe3df8f405146a26b33182845abc5ffaca
   }
 }
