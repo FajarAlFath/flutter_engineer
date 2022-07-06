@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 import 'package:flutter_bayeue/model/api/profile_api.dart';
 import 'package:flutter_bayeue/model/response_profile_model.dart';
-=======
 import 'package:flutter_bayeue/pages/home/feature/payment/payment_page.dart';
 import 'package:flutter_bayeue/pages/home/feature/top%20up/top_up_page.dart';
 import 'package:flutter_bayeue/pages/home/feature/transfer/transfer_page.dart';
 import 'package:flutter_bayeue/pages/home/promo/promo1.dart';
 import 'package:flutter_bayeue/pages/home/promo/promo2.dart';
->>>>>>> 7a412ffe3df8f405146a26b33182845abc5ffaca
 import 'package:unicons/unicons.dart';
 
 class HomePage extends StatefulWidget {
@@ -54,15 +51,6 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Row(
                       children: [
-<<<<<<< HEAD
-                        const CircleAvatar(
-                          radius: 25,
-                          backgroundImage: NetworkImage(
-                              'https://picsum.photos/id/870/200/300?grayscale&blur=2'),
-                        ),
-                        const Text(
-                          ' Hallo',
-=======
                         Padding(
                           padding: const EdgeInsets.only(left: 8),
                           child: SizedBox(
@@ -82,23 +70,15 @@ class _HomePageState extends State<HomePage> {
                         ),
                         const Text(
                           '  Hallo',
->>>>>>> 7a412ffe3df8f405146a26b33182845abc5ffaca
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 24),
                         ),
-<<<<<<< HEAD
                         Text(
                           accountModel != null
                               ? ' ${accountModel!.result!.user!.name!}'
                               : '',
                           style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 26),
-=======
-                        const Text(
-                          ' Udin!',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 24),
->>>>>>> 7a412ffe3df8f405146a26b33182845abc5ffaca
                         ),
                       ],
                     ),
@@ -144,15 +124,10 @@ class _HomePageState extends State<HomePage> {
                     top: 50,
                     left: 30,
                     child: Text(
-<<<<<<< HEAD
                       accountModel != null
                           ? ' ${accountModel!.result!.user!.phone}'
                           : '',
                       style: const TextStyle(
-=======
-                      '085260063022',
-                      style: TextStyle(
->>>>>>> 7a412ffe3df8f405146a26b33182845abc5ffaca
                           fontSize: 18,
                           color: Colors.white,
                           fontWeight: FontWeight.bold),
@@ -206,9 +181,6 @@ class _HomePageState extends State<HomePage> {
 
               //Feature Display category product
               Row(
-<<<<<<< HEAD
-                children: const [Text('data')],
-=======
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Column(
@@ -219,7 +191,7 @@ class _HomePageState extends State<HomePage> {
                             context,
                             MaterialPageRoute(
                               builder: (ctx) {
-                                return TransferPage();
+                                return const TransferPage();
                               },
                             ),
                           );
@@ -335,7 +307,6 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ],
->>>>>>> 7a412ffe3df8f405146a26b33182845abc5ffaca
               ),
               //End of Display category product
 
