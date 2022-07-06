@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bayeue/model/api/profile_api.dart';
 import 'package:flutter_bayeue/model/response_profile_model.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:unicons/unicons.dart';
 
 class HomePage extends StatefulWidget {
@@ -21,8 +19,6 @@ class _HomePageState extends State<HomePage> {
       getProfileApi();
     });
   }
-
-  String name = '';
 
   void getProfileApi() async {
     accountModel = await ProfileApi.getResult();
@@ -55,7 +51,7 @@ class _HomePageState extends State<HomePage> {
                           backgroundImage: NetworkImage(
                               'https://picsum.photos/id/870/200/300?grayscale&blur=2'),
                         ),
-                        Text(
+                        const Text(
                           ' Hallo',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 26),
@@ -64,7 +60,7 @@ class _HomePageState extends State<HomePage> {
                           accountModel != null
                               ? ' ${accountModel!.result!.user!.name!}'
                               : '',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 26),
                         ),
                       ],
@@ -107,12 +103,14 @@ class _HomePageState extends State<HomePage> {
                       style: TextStyle(fontSize: 18, color: Colors.white),
                     ),
                   ),
-                  const Positioned(
+                  Positioned(
                     top: 50,
                     left: 30,
                     child: Text(
-                      '08023840238402',
-                      style: TextStyle(
+                      accountModel != null
+                          ? ' ${accountModel!.result!.user!.phone}'
+                          : '',
+                      style: const TextStyle(
                           fontSize: 18,
                           color: Colors.white,
                           fontWeight: FontWeight.bold),
@@ -130,13 +128,26 @@ class _HomePageState extends State<HomePage> {
                     top: 115,
                     left: 30,
                     child: Text(
-                      'Rp. 123456',
+                      'Rp.',
                       style: TextStyle(
                           fontSize: 18,
                           color: Colors.white,
                           fontWeight: FontWeight.bold),
                     ),
                   ),
+                  Positioned(
+                    top: 115,
+                    left: 40,
+                    child: Text(
+                      accountModel != null
+                          ? ' ${accountModel!.result!.user!.name!}'
+                          : '',
+                      style: const TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  )
                 ],
               ),
               Container(
