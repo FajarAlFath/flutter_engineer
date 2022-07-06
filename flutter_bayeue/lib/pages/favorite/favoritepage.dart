@@ -179,7 +179,7 @@ class Favorite extends StatelessWidget {
                                           ],
                                         ),
                                         child: Image.asset(
-                                          listTransaksi[i].image,
+                                          listTransaksi2[i].image,
                                         ),
                                       ),
                                     ),
@@ -189,7 +189,7 @@ class Favorite extends StatelessWidget {
                                     Column(
                                       children: [
                                         Text(
-                                          listTransaksi[i].nama,
+                                          listTransaksi2[i].nama,
                                           style: const TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold),
@@ -292,7 +292,7 @@ class Favorite extends StatelessWidget {
                                           ],
                                         ),
                                         child: Image.asset(
-                                          listTransaksi[i].image,
+                                          listTransaksi3[i].image,
                                         ),
                                       ),
                                     ),
@@ -302,7 +302,7 @@ class Favorite extends StatelessWidget {
                                     Column(
                                       children: [
                                         Text(
-                                          listTransaksi[i].nama,
+                                          listTransaksi3[i].nama,
                                           style: const TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold),
@@ -311,7 +311,7 @@ class Favorite extends StatelessWidget {
                                           height: 5,
                                         ),
                                         Text(
-                                          listTransaksi[i].tanggal,
+                                          listTransaksi3[i].tanggal,
                                           style: const TextStyle(
                                               color: Colors.grey),
                                         ),
@@ -326,9 +326,10 @@ class Favorite extends StatelessWidget {
                                 ),
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(12))),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                  ),
                                   onPressed: () {},
                                   child: const Text(
                                     'SELECT',

@@ -24,7 +24,7 @@ class AuthApi {
     }
   }
 
-  static register1(nama, email, phone, password) async {
+  static register(nama, email, phone, password) async {
     var formRegister = {
       "name": nama,
       "email": email,

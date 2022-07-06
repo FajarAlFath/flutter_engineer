@@ -5,18 +5,14 @@ class Favorite {
 }
 
 List<Favorite> listTransaksi = [
-  Favorite('assets/images/Outline.png', 'Tranfer', '27 May 2022', '20:30',
+  Favorite('assets/images/Outline.png', 'Transfer', '27 May 2022', '20:30',
       '- Rp 50.000'),
-  Favorite('assets/images/lamp.png', 'Listrik', '27 May 2022', '20:30',
+  Favorite('assets/images/Outline.png', 'Transfer', '27 May 2022', '20:30',
       '- Rp 50.000'),
-  Favorite('assets/images/hpjrg.png', 'Data Internet', '27 May 2022', '20:30',
-      '- Rp 50.000'),
-  Favorite('assets/images/hptlp.png', 'Pulsa', '27 May 2022', '20:30',
+  Favorite('assets/images/Outline.png', 'Transfer', '27 May 2022', '20:30',
       '- Rp 50.000'),
 ];
 List<Favorite> listTransaksi2 = [
-  Favorite('assets/images/Outline.png', 'Tranfer', '27 May 2022', '20:30',
-      '- Rp 50.000'),
   Favorite('assets/images/lamp.png', 'Listrik', '27 May 2022', '20:30',
       '- Rp 50.000'),
   Favorite('assets/images/hpjrg.png', 'Data Internet', '27 May 2022', '20:30',
@@ -25,12 +21,10 @@ List<Favorite> listTransaksi2 = [
       '- Rp 50.000'),
 ];
 List<Favorite> listTransaksi3 = [
-  Favorite('assets/images/Outline.png', 'Tranfer', '27 May 2022', '20:30',
+  Favorite('assets/produk/dana.png', 'Top Up', '27 May 2022', '20:30',
       '- Rp 50.000'),
-  Favorite('assets/images/lamp.png', 'Listrik', '27 May 2022', '20:30',
+  Favorite('assets/produk/dana.png', 'Top Up', '27 May 2022', '20:30',
       '- Rp 50.000'),
-  Favorite('assets/images/hpjrg.png', 'Data Internet', '27 May 2022', '20:30',
-      '- Rp 50.000'),
-  Favorite('assets/images/hptlp.png', 'Pulsa', '27 May 2022', '20:30',
+  Favorite('assets/produk/dana.png', 'Top Up', '27 May 2022', '20:30',
       '- Rp 50.000'),
 ];

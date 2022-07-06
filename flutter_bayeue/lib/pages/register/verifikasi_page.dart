@@ -1,8 +1,5 @@
-// import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-
-import 'package:flutter_bayeue/pages/login/login_page.dart';
-// import 'package:flutter_bayeue/pages/register/create_pin.dart';
+import 'package:flutter_bayeue/pages/register/create_pin.dart';
 import 'package:flutter_bayeue/viewmodel/auth_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -84,24 +81,24 @@ class _VerifikasiPageState extends State<VerifikasiPage> {
                     const SizedBox(
                       height: 10,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text('Tidak dapat Code?'),
-                        GestureDetector(
-                          onTap: () {
-                            // Nanti isi oi
-                          },
-                          child: const Text(
-                            ' Kirim Ulang OTP',
-                            style: TextStyle(
-                              color: Colors.blue,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.center,
+                    //   children: [
+                    //     const Text('Tidak dapat Code?'),
+                    //     GestureDetector(
+                    //       onTap: () {
+                    //         // Nanti isi oi
+                    //       },
+                    //       child: const Text(
+                    //         ' Kirim Ulang OTP',
+                    //         style: TextStyle(
+                    //           color: Colors.blue,
+                    //           fontWeight: FontWeight.bold,
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
                     const SizedBox(
                       height: 100,
                     ),
@@ -120,7 +117,7 @@ class _VerifikasiPageState extends State<VerifikasiPage> {
                           if (response == true) {
                             Navigator.pushAndRemoveUntil(context,
                                 MaterialPageRoute(builder: (ctx) {
-                              return const LoginPage();
+                              return const CreatePinPage();
                             }), (route) => false);
                           } else {
                             showDialog(

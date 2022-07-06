@@ -5,20 +5,20 @@ class History {
 }
 
 List<History> listhistory = [
-  History('assets/images/Outline.png', 'Tranfer', '27 May 2022', '20:30',
+  History('assets/images/Outline.png', 'Transfer', '27 May 2022', '20:30',
       '- Rp 50.000'),
-  History('assets/images/lamp.png', 'Tranfer', '27 May 2022', '20:30',
+  History('assets/images/lamp.png', 'Transfer', '27 May 2022', '20:30',
       '- Rp 50.000'),
-  History('assets/images/hpjrg.png', 'Tranfer', '27 May 2022', '20:30',
+  History('assets/images/hpjrg.png', 'Transfer', '27 May 2022', '20:30',
       '- Rp 50.000'),
-  History('assets/images/hptlp.png', 'Tranfer', '27 May 2022', '20:30',
+  History('assets/images/hptlp.png', 'Transfer', '27 May 2022', '20:30',
       '- Rp 50.000'),
-  History('assets/images/Outline.png', 'Tranfer', '27 May 2022', '20:30',
+  History('assets/images/Outline.png', 'Transfer', '27 May 2022', '20:30',
       '- Rp 50.000'),
-  History('assets/images/lamp.png', 'Tranfer', '27 May 2022', '20:30',
+  History('assets/images/lamp.png', 'Transfer', '27 May 2022', '20:30',
       '- Rp 50.000'),
-  History('assets/images/hpjrg.png', 'Tranfer', '27 May 2022', '20:30',
+  History('assets/images/hpjrg.png', 'Transfer', '27 May 2022', '20:30',
       '- Rp 50.000'),
-  History('assets/images/hptlp.png', 'Tranfer', '27 May 2022', '20:30',
+  History('assets/images/hptlp.png', 'Transfer', '27 May 2022', '20:30',
       '- Rp 50.000'),
 ];
