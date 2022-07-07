@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             home: authProvider.firstTime == true
-                ? const StartedPage()
+                ? const Navigationpage()
                 : authProvider.isLogin == false
                     ? const LoginPage()
                     : const Navigationpage(),

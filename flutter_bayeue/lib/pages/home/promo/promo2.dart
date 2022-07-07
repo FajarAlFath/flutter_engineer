@@ -48,7 +48,7 @@ class Promo2 extends StatelessWidget {
               height: 20,
             ),
             const Padding(
-              padding: const EdgeInsets.only(right: 200),
+              padding: EdgeInsets.only(right: 200),
               child: Text(
                 'Buy Cinema Tickets',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),

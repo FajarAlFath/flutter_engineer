@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bayeue/pages/profile/help/help.dart';
 import 'package:flutter_bayeue/pages/profile/privacy_policy/privacy.dart';
 import 'package:flutter_bayeue/pages/profile/setting/setting.dart';
 import 'package:flutter_bayeue/pages/profile/terms_conditions/terms_and_conditions_page.dart';
@@ -182,7 +183,10 @@ class Profile extends StatelessWidget {
               shadowColor: Colors.grey,
               child: InkWell(
                 splashColor: Colors.blue.withAlpha(50),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => const HelpSupport()));
+                },
                 child: SizedBox(
                   height: 80,
                   width: 366,
@@ -326,6 +330,7 @@ class Profile extends StatelessWidget {
                 splashColor: Colors.blue.withAlpha(50),
                 onTap: () async {
                   await authProvider.logOut();
+                  // ignore: use_build_context_synchronously
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(

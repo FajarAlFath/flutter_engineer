@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
     // final category = Provider.of<CategoryProvider>(context);
 
     return Scaffold(
-        backgroundColor: Colors.grey.withOpacity(0),
+        backgroundColor: const Color.fromARGB(255, 247, 240, 240),
         body: SafeArea(
             child: SingleChildScrollView(
                 child: Column(
