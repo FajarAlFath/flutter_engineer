@@ -48,7 +48,39 @@ class _SettingState extends State<Setting> {
                       child: ListView.builder(
                     itemCount: listresult.length,
                     itemBuilder: (context, index) {
-                      return Text(listresult[index].name);
+                      return Column(
+                        children: [
+                          InkWell(
+                            onTap: () {},
+                            child: Container(
+                              padding: const EdgeInsets.all(20),
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.shade300,
+                                      blurRadius: 20,
+                                      spreadRadius: 2,
+                                    )
+                                  ]),
+                              child: Column(
+                                children: const [
+                                  Icon(UniconsLine.money_bill),
+                                ],
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            listresult[index].name,
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18),
+                          ),
+                        ],
+                      );
                     },
                   ));
                 } else {
