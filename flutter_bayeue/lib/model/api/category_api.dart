@@ -18,5 +18,6 @@ class CategoryApi {
         print(e.message);
       }
     }
+    return null;
   }
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bayeue/model/api/profile_api.dart';
+import 'package:flutter_bayeue/model/response_profile_model.dart';
 import 'package:flutter_bayeue/pages/profile/help/help.dart';
 import 'package:flutter_bayeue/pages/profile/privacy_policy/privacy.dart';
 import 'package:flutter_bayeue/pages/profile/setting/setting.dart';
@@ -8,8 +10,27 @@ import 'package:provider/provider.dart';
 import 'package:unicons/unicons.dart';
 import 'package:flutter_bayeue/pages/login/login_page.dart';
 
-class Profile extends StatelessWidget {
+class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
+
+  @override
+  State<Profile> createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> {
+  AccountModel? accountModel;
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      getProfileApi();
+    });
+  }
+
+  void getProfileApi() async {
+    accountModel = await ProfileApi.getResult();
+    setState(() {});
+    // accountModel = await ProfileApi.getResult();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,31 +58,34 @@ class Profile extends StatelessWidget {
             const SizedBox(height: 8),
             Row(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 35),
-                  child: SizedBox(
-                    height: 80,
-                    width: 80,
-                    child: Container(
-                      decoration: BoxDecoration(
-                          image: const DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(
-                                'https://picsum.photos/id/870/200/300?grayscale&blur=2'),
-                          ),
-                          borderRadius: BorderRadius.circular(10),
-                          shape: BoxShape.rectangle),
+                if (accountModel != null)
+                  Padding(
+                    padding: const EdgeInsets.only(left: 35),
+                    child: SizedBox(
+                      height: 80,
+                      width: 80,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: NetworkImage(
+                                  accountModel!.result!.user!.image!),
+                            ),
+                            borderRadius: BorderRadius.circular(10),
+                            shape: BoxShape.rectangle),
+                      ),
                     ),
                   ),
-                ),
                 Padding(
                   padding: const EdgeInsets.only(left: 30),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text(
-                        'Udin',
-                        style: TextStyle(
+                        accountModel != null
+                            ? ' ${accountModel!.result!.user!.name!}'
+                            : '',
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 26,
                         ),
@@ -69,8 +93,10 @@ class Profile extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(top: 8),
                         child: Text(
-                          '085260063022',
-                          style: TextStyle(
+                          accountModel != null
+                              ? '${accountModel!.result!.user!.phone}'
+                              : '',
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Color.fromRGBO(58, 162, 220, 1),
                             fontSize: 22,
