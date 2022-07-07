@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_bayeue/model/api/services.dart';
 import 'package:flutter_bayeue/model/response_category.dart';
 
 class CategoryApi {
   Future<List<Result>?> getCategory() async {
     try {
-      var categoryData =
-          await Dio().get('http://13.229.124.128:19000/category');
+      var categoryData = await Dio().get('${Url.baseUrl}/category');
       print('Category info :${categoryData.data}');
       var categoryresponse = CategoryResponse.fromJson(categoryData.data);
       var categorydata = categoryresponse.result;

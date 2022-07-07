@@ -28,29 +28,31 @@ class _NavigationpageState extends State<Navigationpage> {
         child: pages[_currentIndex],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        selectedIconTheme: IconThemeData(color: Colors.blue),
+        elevation: 16,
         items: const [
           BottomNavigationBarItem(
-            backgroundColor: Color.fromARGB(255, 247, 240, 240),
+            backgroundColor: Colors.white,
             icon: Icon(
               UniconsLine.estate,
             ),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            backgroundColor: Color.fromARGB(255, 247, 240, 240),
+            backgroundColor: Colors.white,
             icon: Icon(
               UniconsLine.invoice,
             ),
             label: 'History',
           ),
           BottomNavigationBarItem(
-              backgroundColor: Color.fromARGB(255, 247, 240, 240),
+              backgroundColor: Colors.white,
               icon: Icon(
                 UniconsLine.favorite,
               ),
               label: 'Favorite'),
           BottomNavigationBarItem(
-              backgroundColor: Color.fromARGB(255, 247, 240, 240),
+              backgroundColor: Colors.white,
               icon: Icon(
                 UniconsLine.user_circle,
               ),

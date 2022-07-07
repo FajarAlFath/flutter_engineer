@@ -251,9 +251,9 @@ class TermsCondition extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 227, 244, 254),
+      backgroundColor: Colors.grey.withOpacity(0),
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 227, 244, 254),
+        backgroundColor: Colors.grey.withOpacity(0),
         elevation: 0,
         leading: InkWell(
           onTap: () {

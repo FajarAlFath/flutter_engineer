@@ -27,120 +27,124 @@ class Promo1 extends StatelessWidget {
         ),
       ),
       backgroundColor: const Color.fromARGB(255, 247, 240, 240),
-      body: Column(
-        children: [
-          const SizedBox(
-            height: 10,
-          ),
-          SizedBox(
-            width: double.infinity,
-            child: Image.asset(
-              'assets/promo/promo1.png',
-              height: 200,
-              width: 400,
-              fit: BoxFit.fill,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 10,
             ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          const Padding(
-            padding: const EdgeInsets.only(right: 150),
-            child: Text(
-              'Shopping for Vegetables',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-          ),
-          const SizedBox(
-            height: 14,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.white,
-              ),
-              height: 150,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text(
-                    'Description',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lacus, at nunc amet diam. Sed pellentesque maecenas nisl viverra malesuada. Eget purus posuere vivamus tempus.',
-                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
-                  )
-                ],
+            SizedBox(
+              width: double.infinity,
+              child: Image.asset(
+                'assets/promo/promo1.png',
+                height: 200,
+                width: 400,
+                fit: BoxFit.fill,
               ),
             ),
-          ),
-          const SizedBox(
-            height: 24,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.white,
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'Detail Promo',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  ListTile(
-                    leading: Image.asset('assets/promo/kado.png'),
-                    title: const Text(
-                      'Benefit',
-                      style: TextStyle(color: Colors.blue),
-                    ),
-                    subtitle: const Text(
-                      '25% discount min shopping Rp 50.000 up to Rp 20.000',
-                      style: TextStyle(color: Colors.black),
-                    ),
-                  ),
-                  ListTile(
-                    leading: Image.asset('assets/promo/jam.png'),
-                    title: const Text(
-                      'Promo Period',
-                      style: TextStyle(color: Colors.blue),
-                    ),
-                    subtitle: const Text(
-                      '23 May 2022 07:00 WIB - 30 May 2022 at 23:59 WIB',
-                      style: TextStyle(color: Colors.black),
-                    ),
-                  ),
-                  ListTile(
-                    leading: Image.asset('assets/promo/wallet.png'),
-                    title: const Text(
-                      'Payment Method',
-                      style: TextStyle(color: Colors.blue),
-                    ),
-                    subtitle: const Text(
-                      'Bayeue Balance, Debit Card, Credit Card',
-                      style: TextStyle(color: Colors.black),
-                    ),
-                  ),
-                ],
+            const SizedBox(
+              height: 20,
+            ),
+            const Padding(
+              padding: const EdgeInsets.only(right: 150),
+              child: Text(
+                'Shopping for Vegetables',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               ),
             ),
-          ),
-        ],
+            const SizedBox(
+              height: 14,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.white,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text(
+                      'Description',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lacus, at nunc amet diam. Sed pellentesque maecenas nisl viverra malesuada. Eget purus posuere vivamus tempus.',
+                      style:
+                          TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
+                    )
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 24,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.white,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Detail Promo',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    ListTile(
+                      leading: Image.asset('assets/promo/kado.png'),
+                      title: const Text(
+                        'Benefit',
+                        style: TextStyle(color: Colors.blue),
+                      ),
+                      subtitle: const Text(
+                        '25% discount min shopping Rp 50.000 up to Rp 20.000',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                    ListTile(
+                      leading: Image.asset('assets/promo/jam.png'),
+                      title: const Text(
+                        'Promo Period',
+                        style: TextStyle(color: Colors.blue),
+                      ),
+                      subtitle: const Text(
+                        '23 May 2022 07:00 WIB - 30 May 2022 at 23:59 WIB',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                    ListTile(
+                      leading: Image.asset('assets/promo/wallet.png'),
+                      title: const Text(
+                        'Payment Method',
+                        style: TextStyle(color: Colors.blue),
+                      ),
+                      subtitle: const Text(
+                        'Bayeue Balance, Debit Card, Credit Card',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
