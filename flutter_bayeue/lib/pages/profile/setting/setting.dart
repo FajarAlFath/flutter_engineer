@@ -16,7 +16,6 @@ class _SettingState extends State<Setting> {
 
   @override
   Widget build(BuildContext context) {
-    final CategoryApi = _api.getCategory();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 227, 244, 254),
