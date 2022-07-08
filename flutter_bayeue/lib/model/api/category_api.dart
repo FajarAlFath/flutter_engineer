@@ -3,7 +3,7 @@ import 'package:flutter_bayeue/model/api/services.dart';
 import 'package:flutter_bayeue/model/response_category.dart';
 
 class CategoryApi {
-  Future<List<Result>?> getCategory() async {
+  Future<List<ResultCategory>?> getCategory() async {
     try {
       var categoryData = await Dio().get('${Url.baseUrl}/category');
       print('Category info :${categoryData.data}');

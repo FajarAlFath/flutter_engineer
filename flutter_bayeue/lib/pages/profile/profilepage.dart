@@ -91,7 +91,7 @@ class _ProfileState extends State<Profile> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: 8),
+                        padding: const EdgeInsets.only(top: 8),
                         child: Text(
                           accountModel != null
                               ? '${accountModel!.result!.user!.phone}'

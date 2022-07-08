@@ -69,14 +69,14 @@ class CategoryResponse {
 
   String message;
   int rescode;
-  List<Result> result;
+  List<ResultCategory> result;
 
   factory CategoryResponse.fromJson(Map<String, dynamic> json) =>
       CategoryResponse(
         message: json["message"],
         rescode: json["rescode"],
-        result:
-            List<Result>.from(json["result"].map((x) => Result.fromJson(x))),
+        result: List<ResultCategory>.from(
+            json["result"].map((x) => ResultCategory.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -86,8 +86,8 @@ class CategoryResponse {
       };
 }
 
-class Result {
-  Result({
+class ResultCategory {
+  ResultCategory({
     required this.id,
     required this.name,
     required this.icon,
@@ -99,7 +99,7 @@ class Result {
   String icon;
   bool status;
 
-  factory Result.fromJson(Map<String, dynamic> json) => Result(
+  factory ResultCategory.fromJson(Map<String, dynamic> json) => ResultCategory(
         id: json["ID"],
         name: json["Name"],
         icon: json["Icon"],
