@@ -1,6 +1,5 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bayeue/model/storage/local_storage.dart';
 import 'package:flutter_bayeue/pages/home/navigation_bar.dart';
 import 'package:flutter_bayeue/pages/login/lupa_password_page.dart';
 import 'package:flutter_bayeue/pages/register/register_page.dart';
@@ -15,8 +14,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  
-
   final fromKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();

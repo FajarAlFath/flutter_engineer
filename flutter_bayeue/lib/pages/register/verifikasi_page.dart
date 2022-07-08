@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bayeue/pages/login/login_page.dart';
 import 'package:flutter_bayeue/pages/register/create_pin.dart';
 import 'package:flutter_bayeue/viewmodel/auth_provider.dart';
 import 'package:provider/provider.dart';
@@ -117,7 +118,7 @@ class _VerifikasiPageState extends State<VerifikasiPage> {
                           if (response == true) {
                             Navigator.pushAndRemoveUntil(context,
                                 MaterialPageRoute(builder: (ctx) {
-                              return const CreatePinPage();
+                              return const LoginPage();
                             }), (route) => false);
                           } else {
                             showDialog(
