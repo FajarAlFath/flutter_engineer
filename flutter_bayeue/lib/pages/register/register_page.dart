@@ -1,6 +1,8 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bayeue/pages/login/login_page.dart';
+import 'package:flutter_bayeue/pages/profile/terms_conditions/terms_and_conditions_page.dart';
+import 'package:flutter_bayeue/pages/register/terms_and_conditions_page.dart';
 import 'package:flutter_bayeue/pages/register/verifikasi_page.dart';
 import 'package:flutter_bayeue/viewmodel/auth_provider.dart';
 import 'package:provider/provider.dart';
@@ -192,20 +194,30 @@ class _RegisterPageState extends State<RegisterPage> {
                         Flexible(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              Text(
+                            children: [
+                              const Text(
                                 'Saya menerima segala isi Syarat Penggunaan dan ',
                                 style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
-                              Text(
-                                'Kebijakan Privasi',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.blue,
+                              InkWell(
+                                onTap: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return const TermsCondition1();
+                                    },
+                                  );
+                                },
+                                child: const Text(
+                                  'Kebijakan Privasi',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.blue,
+                                  ),
                                 ),
                               ),
                             ],

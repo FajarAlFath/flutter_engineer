@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bayeue/model/api/auth_api.dart';
 import 'package:flutter_bayeue/model/storage/local_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../model/api/auth_api.dart';
 
 class AuthProvider with ChangeNotifier {
   bool firstTime = true;

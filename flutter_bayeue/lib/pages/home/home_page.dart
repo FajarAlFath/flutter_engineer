@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bayeue/pages/home/feature/payment/payment_page.dart';
-import 'package:flutter_bayeue/pages/home/feature/top%20up/top_up_page.dart';
-import 'package:flutter_bayeue/pages/home/feature/transfer/transfer_page.dart';
+import 'package:flutter_bayeue/model/api/category_api.dart';
+import 'package:flutter_bayeue/model/api/profile_api.dart';
+import 'package:flutter_bayeue/model/response_category.dart';
+import 'package:flutter_bayeue/model/response_profile_model.dart';
 import 'package:flutter_bayeue/pages/home/promo/promo1.dart';
 import 'package:flutter_bayeue/pages/home/promo/promo2.dart';
 import 'package:unicons/unicons.dart';
+
+import 'feature/payment/payments_list.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,24 +17,42 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final CategoryApi _api = CategoryApi();
+  AccountModel? accountModel;
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      getProfileApi();
+    });
+  }
+
+  void getProfileApi() async {
+    accountModel = await ProfileApi.getResult();
+    setState(() {});
+    // accountModel = await ProfileApi.getResult();
+  }
+
   @override
   Widget build(BuildContext context) {
+    // final category = Provider.of<CategoryProvider>(context);
+
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 247, 240, 240),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 24,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 24,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      if (accountModel != null)
                         Padding(
                           padding: const EdgeInsets.only(left: 8),
                           child: SizedBox(
@@ -39,113 +60,219 @@ class _HomePageState extends State<HomePage> {
                             width: 50,
                             child: Container(
                               decoration: BoxDecoration(
-                                  image: const DecorationImage(
-                                    fit: BoxFit.cover,
+                                  image: DecorationImage(
+                                    fit: BoxFit.fill,
                                     image: NetworkImage(
-                                        'https://picsum.photos/id/870/200/300?grayscale&blur=2'),
+                                        accountModel!.result!.user!.image!),
                                   ),
                                   borderRadius: BorderRadius.circular(10),
                                   shape: BoxShape.rectangle),
                             ),
                           ),
                         ),
-                        const Text(
-                          '  Hallo',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 24),
-                        ),
-                        const Text(
-                          ' Udin!',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 24),
-                        ),
-                      ],
-                    ),
-                    Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
+                      const Text(
+                        '  Hallo',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 24),
                       ),
-                      child: const Icon(
-                        UniconsLine.bell,
-                        color: Colors.blue,
-                        size: 30,
+                      Text(
+                        accountModel != null
+                            ? ' ${accountModel!.result!.user!.name!}'
+                            : '',
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 26),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Stack(
-                alignment: AlignmentDirectional.center,
-                children: [
-                  Image.asset('assets/images/home2.png'),
-                  Positioned(
-                    top: 12,
-                    right: 24,
-                    child: Image.asset(
-                      'assets/images/dihome.png',
-                      fit: BoxFit.fill,
-                    ),
+                    ],
                   ),
-                  const Positioned(
-                    top: 20,
-                    left: 30,
-                    child: Text(
-                      'Phone Number',
-                      style: TextStyle(fontSize: 18, color: Colors.white),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
                     ),
-                  ),
-                  const Positioned(
-                    top: 50,
-                    left: 30,
-                    child: Text(
-                      '085260063022',
-                      style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  const Positioned(
-                    top: 85,
-                    left: 30,
-                    child: Text(
-                      'Current Balance',
-                      style: TextStyle(fontSize: 18, color: Colors.white),
-                    ),
-                  ),
-                  const Positioned(
-                    top: 115,
-                    left: 30,
-                    child: Text(
-                      'Rp. 123456',
-                      style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold),
+                    child: const Icon(
+                      UniconsLine.bell,
+                      color: Colors.blue,
+                      size: 30,
                     ),
                   ),
                 ],
               ),
-              Container(
-                margin: const EdgeInsets.only(top: 16),
-                padding: const EdgeInsets.only(right: 300),
-                child: const Text(
-                  'Feature',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Stack(
+              alignment: AlignmentDirectional.center,
+              children: [
+                Image.asset('assets/images/home2.png'),
+                Positioned(
+                  top: 12,
+                  right: 24,
+                  child: Image.asset(
+                    'assets/images/dihome.png',
+                    fit: BoxFit.fill,
+                  ),
                 ),
+                const Positioned(
+                  top: 20,
+                  left: 30,
+                  child: Text(
+                    'Phone Number',
+                    style: TextStyle(fontSize: 18, color: Colors.white),
+                  ),
+                ),
+                Positioned(
+                  top: 50,
+                  left: 30,
+                  child: Text(
+                    accountModel != null
+                        ? '${accountModel!.result!.user!.phone}'
+                        : '',
+                    style: const TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                const Positioned(
+                  top: 85,
+                  left: 30,
+                  child: Text(
+                    'Current Balance',
+                    style: TextStyle(fontSize: 18, color: Colors.white),
+                  ),
+                ),
+                const Positioned(
+                  top: 115,
+                  left: 30,
+                  child: Text(
+                    'Rp.',
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Positioned(
+                  top: 115,
+                  left: 60,
+                  child: Text(
+                    accountModel != null
+                        ? ' ${accountModel!.result!.account!.saldo}'
+                        : '',
+                    style: const TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                  ),
+                )
+              ],
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 16),
+              padding: const EdgeInsets.only(right: 300),
+              child: const Text(
+                'Feature',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               ),
-              const SizedBox(
-                height: 10,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            FutureBuilder<List<ResultCategory>?>(
+              future: _api.getCategory(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  List<ResultCategory> listresult = snapshot.data!;
+                  return Expanded(
+                    child: GridView.builder(
+                        shrinkWrap: true,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                        ),
+                        itemCount: listresult.length,
+                        itemBuilder: (context, i) {
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => classes.elementAt(i),
+                                ),
+                              );
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(2),
+                              child: Container(
+                                height: 120,
+                                width: 120,
+                                margin: const EdgeInsets.all(20),
+                                decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.shade300,
+                                      blurRadius: 20,
+                                      spreadRadius: 2,
+                                    )
+                                  ],
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Icon(
+                                      UniconsLine.transaction,
+                                      size: 30,
+                                      color: Colors.blue,
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      listresult[i].name,
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                        }),
+                  );
+                } else {
+                  return const CircularProgressIndicator();
+                }
+              },
+            ),
+
+            //End of Display category product
+
+            const SizedBox(
+              height: 24,
+            ),
+            Container(
+              padding: const EdgeInsets.only(right: 160),
+              child: const Text(
+                'Info and Special Promo',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
+            ),
+            const SizedBox(
+              height: 24,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
+                  ),
+                  child: Column(
                     children: [
                       InkWell(
                         onTap: () {
@@ -153,454 +280,102 @@ class _HomePageState extends State<HomePage> {
                             context,
                             MaterialPageRoute(
                               builder: (ctx) {
-                                return TransferPage();
+                                return const Promo1();
                               },
                             ),
                           );
                         },
-                        child: Container(
-                          padding: const EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  blurRadius: 20,
-                                  spreadRadius: 2,
-                                )
-                              ]),
-                          child: Image.asset(
-                            'assets/images/Outline.png',
-                            color: Colors.blue,
+                        child: SizedBox(
+                          height: 100,
+                          width: 180,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Image.asset(
+                              'assets/promo/promo1.png',
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),
                       const SizedBox(
-                        height: 10,
+                        height: 5,
                       ),
-                      const Text(
-                        'Transfer',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            'Shopping for Vegetables',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16),
+                          ),
+                          Text(
+                            'To get 25% cashback',
+                            style: TextStyle(fontSize: 13),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                  Column(
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
+                  ),
+                  child: Column(
                     children: [
                       InkWell(
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (ctx) {
-                              return const TopUpPage();
-                            }),
+                            MaterialPageRoute(
+                              builder: (ctx) {
+                                return const Promo2();
+                              },
+                            ),
                           );
                         },
-                        child: Container(
-                          padding: const EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  blurRadius: 20,
-                                  spreadRadius: 2,
-                                )
-                              ]),
-                          child: Column(
-                            children: [
-                              Image.asset(
-                                'assets/images/trx.png',
-                                color: Colors.blue,
-                              ),
-                            ],
+                        child: SizedBox(
+                          height: 100,
+                          width: 180,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Image.asset(
+                              'assets/promo/promo2.png',
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),
                       const SizedBox(
-                        height: 10,
+                        height: 5,
                       ),
-                      const Text(
-                        'Top Up',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (ctx) {
-                              return PaymentPage();
-                            }),
-                          );
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  blurRadius: 20,
-                                  spreadRadius: 2,
-                                )
-                              ]),
-                          child: Image.asset(
-                            'assets/images/bill.png',
-                            color: Colors.blue,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            'Buy Cinema Tickets',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16),
                           ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const Text(
-                        'Payment',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
+                          Text(
+                            'To get 15% off',
+                            style: TextStyle(fontSize: 13),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                ],
-              ),
-              const SizedBox(
-                height: 24,
-              ),
-              Container(
-                padding: const EdgeInsets.only(right: 160),
-                child: const Text(
-                  'Info and Special Promo',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-              ),
-              const SizedBox(
-                height: 24,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                    ),
-                    child: Column(
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (ctx) {
-                                  return const Promo1();
-                                },
-                              ),
-                            );
-                          },
-                          child: SizedBox(
-                            height: 100,
-                            width: 180,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: Image.asset(
-                                'assets/promo/promo1.png',
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Text(
-                              'Shopping for Vegetables',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 16),
-                            ),
-                            Text(
-                              'To get 25% cashback',
-                              style: TextStyle(fontSize: 13),
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                    ),
-                    child: Column(
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (ctx) {
-                                  return const Promo2();
-                                },
-                              ),
-                            );
-                          },
-                          child: SizedBox(
-                            height: 100,
-                            width: 180,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: Image.asset(
-                                'assets/promo/promo2.png',
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Text(
-                              'Buy Cinema Tickets',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 16),
-                            ),
-                            Text(
-                              'To get 15% off',
-                              style: TextStyle(fontSize: 13),
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              const Padding(
-                padding: EdgeInsets.only(right: 200),
-                child: Text(
-                  'Last Transaction',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            // print('object');
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.all(20),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  blurRadius: 20,
-                                  spreadRadius: 2,
-                                ),
-                              ],
-                            ),
-                            child: Image.asset(
-                              'assets/images/Outline.png',
-                              color: Colors.blue,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 30,
-                        ),
-                        Column(
-                          children: const [
-                            Text(
-                              'Transfer',
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              '27 May 2022',
-                              style: TextStyle(color: Colors.grey),
-                            ),
-                            Text('20:30 WIB',
-                                style: TextStyle(color: Colors.grey)),
-                          ],
-                        ),
-                      ],
-                    ),
-                    const Text(
-                      '- 50.000',
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            // print('object');
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.all(20),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  blurRadius: 20,
-                                  spreadRadius: 2,
-                                ),
-                              ],
-                            ),
-                            child: Image.asset(
-                              'assets/images/Outline.png',
-                              color: Colors.blue,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 30,
-                        ),
-                        Column(
-                          children: const [
-                            Text(
-                              'Transfer',
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              '27 May 2022',
-                              style: TextStyle(color: Colors.grey),
-                            ),
-                            Text('20:30 WIB',
-                                style: TextStyle(color: Colors.grey)),
-                          ],
-                        ),
-                      ],
-                    ),
-                    const Text(
-                      '- 50.000',
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            // print('object');
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.all(20),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.shade300,
-                                  blurRadius: 20,
-                                  spreadRadius: 2,
-                                ),
-                              ],
-                            ),
-                            child: Image.asset(
-                              'assets/images/Outline.png',
-                              color: Colors.blue,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 30,
-                        ),
-                        Column(
-                          children: const [
-                            Text(
-                              'Transfer',
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              '27 May 2022',
-                              style: TextStyle(color: Colors.grey),
-                            ),
-                            Text('20:30 WIB',
-                                style: TextStyle(color: Colors.grey)),
-                          ],
-                        ),
-                      ],
-                    ),
-                    const Text(
-                      '- 50.000',
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-            ],
-          ),
+              ],
+            ),
+          ],
         ),
       ),
     );

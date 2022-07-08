@@ -315,9 +315,9 @@ class Privacy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 227, 244, 254),
+      backgroundColor: const Color.fromARGB(255, 247, 240, 240),
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 227, 244, 254),
+        backgroundColor: const Color.fromARGB(255, 247, 240, 240),
         elevation: 0,
         leading: InkWell(
           onTap: () {
@@ -338,28 +338,20 @@ class Privacy extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
-              elevation: 5,
-              margin: const EdgeInsets.all(20),
-              child: SizedBox(
-                width: 366,
-                child: Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Text(
-                    longstring,
-                    style: TextStyle(
-                        color: Colors.black.withOpacity(0.6),
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
+        child: Card(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          elevation: 5,
+          margin: const EdgeInsets.all(20),
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Text(
+              longstring,
+              style: TextStyle(
+                  color: Colors.black.withOpacity(0.6),
+                  fontWeight: FontWeight.bold),
             ),
-          ],
+          ),
         ),
       ),
     );

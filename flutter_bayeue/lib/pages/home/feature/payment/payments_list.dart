@@ -1,4 +1,5 @@
 import 'package:flutter_bayeue/pages/home/feature/payment/fitur/fitur_page.dart';
+import 'package:flutter_bayeue/pages/home/feature/top%20up/top_up_page.dart';
 
 class Payment {
   final String image, nama;
@@ -16,8 +17,8 @@ List<Payment> listpayment = [
 ];
 
 List classes = [
-  const ListrikPage(),
   const PulsaPage(),
+  const ListrikPage(),
   const PaketDataPage(),
-  const InternetPage(),
+  const TopUpPage(),
 ];
