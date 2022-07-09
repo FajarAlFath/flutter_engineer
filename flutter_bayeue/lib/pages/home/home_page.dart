@@ -3,10 +3,7 @@ import 'package:flutter_bayeue/model/api/category_api.dart';
 import 'package:flutter_bayeue/model/api/profile_api.dart';
 import 'package:flutter_bayeue/model/response_category.dart';
 import 'package:flutter_bayeue/model/response_profile_model.dart';
-import 'package:flutter_bayeue/pages/home/feature/payment/payment_page.dart';
 import 'package:flutter_bayeue/pages/home/feature/top%20up/top_up_list.dart';
-import 'package:flutter_bayeue/pages/home/feature/top%20up/top_up_page.dart';
-import 'package:flutter_bayeue/pages/home/feature/transfer/transfer_page.dart';
 import 'package:flutter_bayeue/pages/home/promo/promo1.dart';
 import 'package:flutter_bayeue/pages/home/promo/promo2.dart';
 import 'package:unicons/unicons.dart';
@@ -84,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                               ? ' ${accountModel!.result!.user!.name!}'
                               : '',
                           style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 26),
+                              fontWeight: FontWeight.bold, fontSize: 24),
                         ),
                       ],
                     ),

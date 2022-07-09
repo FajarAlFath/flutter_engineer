@@ -67,7 +67,10 @@ class _RegisterPageState extends State<RegisterPage> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Nama';
+                      } else if (value.length > 10) {
+                        return 'Nama Maksimal 10 karakter';
                       }
+
                       return null;
                     },
                     decoration: InputDecoration(
