@@ -17,8 +17,9 @@ class _SettingState extends State<Setting> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 247, 240, 240),
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 227, 244, 254),
+        backgroundColor: const Color.fromARGB(255, 247, 240, 240),
         elevation: 0,
         leading: InkWell(
           onTap: () {
@@ -38,70 +39,200 @@ class _SettingState extends State<Setting> {
               color: Colors.black.withOpacity(0.8)),
         ),
       ),
-      body: SafeArea(
-        child: FutureBuilder<List<ResultCategory>?>(
-          future: _api.getCategory(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              List<ResultCategory> listresult = snapshot.data!;
-              return GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            children: [
+              Container(
+                margin: const EdgeInsets.only(top: 24),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.grey.withOpacity(0.2),
+                ),
+                child: const ListTile(
+                  leading: Icon(UniconsLine.search),
+                  title: TextField(
+                    decoration: InputDecoration(
+                        hintText: 'what can we do to help you?',
+                        border: InputBorder.none),
                   ),
-                  itemCount: listresult.length,
-                  itemBuilder: (context, i) {
-                    return GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => classes.elementAt(i),
-                          ),
-                        );
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(2),
-                        child: Container(
-                          height: 120,
-                          width: 120,
-                          margin: const EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.shade300,
-                                blurRadius: 20,
-                                spreadRadius: 2,
-                              )
-                            ],
+                ),
+              ),
+              const SizedBox(
+                height: 24,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.3),
+                          spreadRadius: 3,
+                          blurRadius: 10,
+                          offset:
+                              const Offset(0, 3), // changes position of shadow
+                        ),
+                      ]),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ListTile(
+                        onTap: () {},
+                        enabled: true,
+                        leading: CircleAvatar(
+                          backgroundColor: Colors.blue.withOpacity(0.8),
+                          child: const Icon(
+                            UniconsLine.bell,
                             color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Icon(
-                                UniconsLine.transaction,
-                                size: 30,
-                                color: Colors.blue,
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                listresult[i].name,
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
                           ),
                         ),
+                        title: const Text('Notification'),
+                        trailing: const Icon(
+                          UniconsLine.angle_right_b,
+                          color: Colors.blue,
+                        ),
                       ),
-                    );
-                  });
-            } else {
-              return const CircularProgressIndicator();
-            }
-          },
+                      ListTile(
+                        onTap: () {},
+                        leading: CircleAvatar(
+                          backgroundColor: Colors.blue.withOpacity(0.8),
+                          child: const Icon(
+                            UniconsLine.lock,
+                            color: Colors.white,
+                          ),
+                        ),
+                        title: const Text('Privacy'),
+                        trailing: const Icon(
+                          UniconsLine.angle_right_b,
+                          color: Colors.blue,
+                        ),
+                      ),
+                      ListTile(
+                        onTap: () {},
+                        leading: CircleAvatar(
+                          backgroundColor: Colors.blue.withOpacity(0.8),
+                          child: const Icon(
+                            UniconsLine.shield,
+                            color: Colors.white,
+                          ),
+                        ),
+                        title: const Text('Security'),
+                        trailing: const Icon(
+                          UniconsLine.angle_right_b,
+                          color: Colors.blue,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 25,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.3),
+                          spreadRadius: 3,
+                          blurRadius: 10,
+                          offset:
+                              const Offset(0, 3), // changes position of shadow
+                        ),
+                      ]),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ListTile(
+                        onTap: () {},
+                        leading: CircleAvatar(
+                          backgroundColor: Colors.blue.withOpacity(0.8),
+                          child: const Icon(
+                            UniconsLine.text_fields,
+                            color: Colors.white,
+                          ),
+                        ),
+                        title: const Text('Text Size'),
+                        trailing: const Icon(
+                          UniconsLine.angle_right_b,
+                          color: Colors.blue,
+                        ),
+                      ),
+                      ListTile(
+                        onTap: () {},
+                        leading: CircleAvatar(
+                          backgroundColor: Colors.blue.withOpacity(0.8),
+                          child: const Icon(
+                            UniconsLine.english_to_chinese,
+                            color: Colors.white,
+                          ),
+                        ),
+                        title: const Text('Language'),
+                        trailing: const Icon(
+                          UniconsLine.angle_right_b,
+                          color: Colors.blue,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 25,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.3),
+                          spreadRadius: 3,
+                          blurRadius: 10,
+                          offset:
+                              const Offset(0, 3), // changes position of shadow
+                        ),
+                      ]),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ListTile(
+                        onTap: () {},
+                        leading: CircleAvatar(
+                          backgroundColor: Colors.blue.withOpacity(0.8),
+                          child: const Icon(
+                            UniconsLine.bell,
+                            color: Colors.white,
+                          ),
+                        ),
+                        title: const Text('Notification'),
+                        trailing: const Icon(
+                          UniconsLine.angle_right_b,
+                          color: Colors.blue,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

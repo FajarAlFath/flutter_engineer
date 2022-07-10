@@ -132,7 +132,7 @@ class _ProfileState extends State<Profile> {
                           width: 40,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: const Color.fromRGBO(58, 162, 220, 1),
+                            color: Colors.blue.withOpacity(0.8),
                           ),
                           child: const Icon(
                             UniconsLine.user,
@@ -179,7 +179,7 @@ class _ProfileState extends State<Profile> {
                           width: 40,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: const Color.fromRGBO(58, 162, 220, 1),
+                            color: Colors.blue.withOpacity(0.8),
                           ),
                           child: const Icon(
                             UniconsLine.setting,
@@ -226,7 +226,7 @@ class _ProfileState extends State<Profile> {
                           width: 40,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: const Color.fromRGBO(58, 162, 220, 1),
+                            color: Colors.blue.withOpacity(0.8),
                           ),
                           child: const Icon(
                             UniconsLine.comment_add,
@@ -275,7 +275,7 @@ class _ProfileState extends State<Profile> {
                           width: 40,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: const Color.fromRGBO(58, 162, 220, 1),
+                            color: Colors.blue.withOpacity(0.8),
                           ),
                           child: const Icon(
                             UniconsLine.exclamation_triangle,
@@ -322,7 +322,7 @@ class _ProfileState extends State<Profile> {
                           width: 40,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: const Color.fromRGBO(58, 162, 220, 1),
+                            color: Colors.blue.withOpacity(0.8),
                           ),
                           child: const Icon(
                             UniconsLine.lock_open_alt,
@@ -352,7 +352,7 @@ class _ProfileState extends State<Profile> {
               ),
               elevation: 5,
               shadowColor: Colors.black,
-              color: const Color.fromRGBO(58, 162, 220, 1),
+              color: Colors.blue.withOpacity(0.8),
               child: InkWell(
                 splashColor: Colors.blue.withAlpha(50),
                 onTap: () async {
