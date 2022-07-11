@@ -3,7 +3,8 @@ import 'package:flutter_bayeue/model/api/category_api.dart';
 import 'package:flutter_bayeue/model/api/profile_api.dart';
 import 'package:flutter_bayeue/model/response_category.dart';
 import 'package:flutter_bayeue/model/response_profile_model.dart';
-import 'package:flutter_bayeue/pages/home/feature/top%20up/top_up_list.dart';
+import 'package:flutter_bayeue/pages/home/components/category_list.dart';
+import 'package:flutter_bayeue/pages/home/components/icons_bayeue.dart';
 import 'package:flutter_bayeue/pages/home/promo/promo1.dart';
 import 'package:flutter_bayeue/pages/home/promo/promo2.dart';
 import 'package:unicons/unicons.dart';
@@ -80,6 +81,8 @@ class _HomePageState extends State<HomePage> {
                           accountModel != null
                               ? ' ${accountModel!.result!.user!.name!}'
                               : '',
+                          overflow: TextOverflow.fade,
+                          maxLines: 1,
                           style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 24),
                         ),
@@ -179,7 +182,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 5,
               ),
 
               //Feature Display category product
@@ -188,25 +191,25 @@ class _HomePageState extends State<HomePage> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     List<ResultCategory> listresult = snapshot.data!;
-                    return GridView.builder(
-                        shrinkWrap: true,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3,
-                        ),
-                        itemCount: listresult.length,
-                        itemBuilder: (context, i) {
-                          return GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) => classes.elementAt(i),
-                                ),
-                              );
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(2),
+                    return Padding(
+                      padding: EdgeInsets.only(left: 10, right: 10),
+                      child: GridView.builder(
+                          shrinkWrap: true,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                          ),
+                          itemCount: listresult.length,
+                          itemBuilder: (context, i) {
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => categoryClass.elementAt(i),
+                                  ),
+                                );
+                              },
                               child: Container(
                                 height: 120,
                                 width: 120,
@@ -216,7 +219,7 @@ class _HomePageState extends State<HomePage> {
                                     BoxShadow(
                                       color: Colors.grey.shade300,
                                       blurRadius: 20,
-                                      spreadRadius: 2,
+                                      spreadRadius: 4,
                                     )
                                   ],
                                   color: Colors.white,
@@ -225,8 +228,8 @@ class _HomePageState extends State<HomePage> {
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    const Icon(
-                                      UniconsLine.transaction,
+                                    Icon(
+                                      iconsCategory.elementAt(i),
                                       size: 30,
                                       color: Colors.blue,
                                     ),
@@ -235,15 +238,16 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                     Text(
                                       listresult[i].name,
-                                      style: const TextStyle(
-                                          fontWeight: FontWeight.bold),
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black.withOpacity(0.7)),
                                     ),
                                   ],
                                 ),
                               ),
-                            ),
-                          );
-                        });
+                            );
+                          }),
+                    );
                   } else {
                     return const CircularProgressIndicator();
                   }
@@ -252,7 +256,7 @@ class _HomePageState extends State<HomePage> {
               //End of Display category product
 
               const SizedBox(
-                height: 24,
+                height: 5,
               ),
               Container(
                 padding: const EdgeInsets.only(right: 160),

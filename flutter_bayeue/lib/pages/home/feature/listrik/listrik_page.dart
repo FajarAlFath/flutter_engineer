@@ -1,12 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-
 import '../top up/top_up_list.dart';
 
-class TransferPage extends StatelessWidget {
-  const TransferPage({Key? key}) : super(key: key);
+class ListrikPage extends StatelessWidget {
+  const ListrikPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
