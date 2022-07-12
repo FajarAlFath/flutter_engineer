@@ -192,7 +192,7 @@ class _HomePageState extends State<HomePage> {
                   if (snapshot.hasData) {
                     List<ResultCategory> listresult = snapshot.data!;
                     return Padding(
-                      padding: EdgeInsets.only(left: 10, right: 10),
+                      padding: const EdgeInsets.only(left: 10, right: 10),
                       child: GridView.builder(
                           shrinkWrap: true,
                           gridDelegate:

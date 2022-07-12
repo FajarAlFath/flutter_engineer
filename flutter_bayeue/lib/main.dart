@@ -3,6 +3,7 @@ import 'package:flutter_bayeue/pages/home/navigation_bar.dart';
 import 'package:flutter_bayeue/pages/login/login_page.dart';
 import 'package:flutter_bayeue/pages/login/started_page.dart';
 import 'package:flutter_bayeue/viewmodel/auth_provider.dart';
+import 'package:flutter_bayeue/viewmodel/products_providers.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(
             create: (_) => AuthProvider(),
           ),
+          ChangeNotifierProvider(create: (_) => ProductsCategoryProvider())
         ],
         builder: (context, child) {
           var authProvider = Provider.of<AuthProvider>(context);
