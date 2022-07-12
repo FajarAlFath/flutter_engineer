@@ -28,20 +28,21 @@ class CategoryApi {
 }
 
 class ProductsCategoryApi {
-  static Future<ProductsCategory?> getProducts({required String id}) async {
+  static Future<ProductsCategory?> getProductsCat({required String id}) async {
     ProductsCategory? catproducts;
     try {
       var dio = Dio();
       var response = await dio.get('${Url.baseUrl}/products/category/$id');
-
-      print('info : ${response.data}');
-      catproducts = ProductsCategory.fromJson(response.data);
+      print('Products info : ${response.data}');
+      if (response.data != null) {
+        catproducts = ProductsCategory.fromJson(response.data);
+      }
       return catproducts;
     } on DioError catch (e) {
       if (e.response != null) {
-        print('Dio error');
+        print(e.response.toString());
       }
     }
-    return catproducts;
+    return null;
   }
 }
