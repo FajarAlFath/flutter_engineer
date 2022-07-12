@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bayeue/model/api/profile_api.dart';
 import 'package:flutter_bayeue/model/response_profile_model.dart';
 import 'package:flutter_bayeue/pages/profile/help/help.dart';
+import 'package:flutter_bayeue/pages/profile/personal%20data/personal_data.dart';
 import 'package:flutter_bayeue/pages/profile/privacy_policy/privacy.dart';
 import 'package:flutter_bayeue/pages/profile/setting/setting.dart';
 import 'package:flutter_bayeue/pages/profile/terms_conditions/terms_and_conditions_page.dart';
@@ -119,7 +120,14 @@ class _ProfileState extends State<Profile> {
               shadowColor: Colors.grey,
               child: InkWell(
                 splashColor: Colors.blue.withAlpha(50),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (contex) => const PersonalData(),
+                    ),
+                  );
+                },
                 child: SizedBox(
                   height: 80,
                   width: 366,

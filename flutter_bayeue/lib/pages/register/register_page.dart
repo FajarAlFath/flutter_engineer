@@ -1,7 +1,6 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bayeue/pages/login/login_page.dart';
-import 'package:flutter_bayeue/pages/profile/terms_conditions/terms_and_conditions_page.dart';
 import 'package:flutter_bayeue/pages/register/terms_and_conditions_page.dart';
 import 'package:flutter_bayeue/pages/register/verifikasi_page.dart';
 import 'package:flutter_bayeue/viewmodel/auth_provider.dart';

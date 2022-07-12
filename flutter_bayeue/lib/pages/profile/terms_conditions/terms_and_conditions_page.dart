@@ -254,6 +254,7 @@ class TermsCondition extends StatelessWidget {
       backgroundColor: const Color.fromARGB(255, 247, 240, 240),
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 247, 240, 240),
+        toolbarHeight: kToolbarHeight * 1.2,
         elevation: 0,
         leading: InkWell(
           onTap: () {

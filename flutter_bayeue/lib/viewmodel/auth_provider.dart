@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bayeue/model/api/auth_api.dart';
 import 'package:flutter_bayeue/model/storage/local_storage.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../model/api/auth_api.dart';
 
@@ -82,5 +83,13 @@ class AuthProvider with ChangeNotifier {
     } else {
       return false;
     }
+  }
+
+  changeprofile(nama, email, password, phone, File) async {
+    try {
+      final img = await ImagePicker().pickImage(source: ImageSource.gallery);
+      await AuthApi.changeprofile(nama, email, password, phone, img);
+      notifyListeners();
+    } catch (e) {}
   }
 }

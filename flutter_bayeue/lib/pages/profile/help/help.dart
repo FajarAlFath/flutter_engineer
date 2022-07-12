@@ -85,6 +85,9 @@ class HelpSupport extends StatelessWidget {
                           ),
                         ),
                       ),
+                      const SizedBox(
+                        height: 10,
+                      ),
                       const Text(
                         'Transfer',
                         style: TextStyle(

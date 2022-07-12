@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bayeue/model/api/category_api.dart';
-import 'package:flutter_bayeue/model/response_category.dart';
-import 'package:flutter_bayeue/pages/home/feature/payment/payments_list.dart';
 import 'package:unicons/unicons.dart';
 
 class Setting extends StatefulWidget {
@@ -20,6 +18,7 @@ class _SettingState extends State<Setting> {
       backgroundColor: const Color.fromARGB(255, 247, 240, 240),
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 247, 240, 240),
+        toolbarHeight: kToolbarHeight * 1.2,
         elevation: 0,
         leading: InkWell(
           onTap: () {

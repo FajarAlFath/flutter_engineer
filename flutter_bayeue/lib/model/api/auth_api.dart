@@ -67,4 +67,22 @@ class AuthApi {
       return null;
     }
   }
+
+  static changeprofile(name, email, password, phone, file) async {
+    var formValidation = {
+      "name": name,
+      "email": email,
+      "password": password,
+      "phone": phone,
+      "file": file
+    };
+    try {
+      var dio = Dio();
+      var respone = await dio.post(
+        '${Url.baseUrl}/user/profile',
+      );
+    } catch (e) {
+      return null;
+    }
+  }
 }
