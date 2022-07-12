@@ -1,86 +1,85 @@
-import 'dart:convert';
-
-ProductsCategory productsCategoryFromJson(String str) =>
-    ProductsCategory.fromJson(json.decode(str));
-
-String productsCategoryToJson(ProductsCategory data) =>
-    json.encode(data.toJson());
-
 class ProductsCategory {
-  ProductsCategory({
-    required this.message,
-    required this.rescode,
-    required this.result,
-  });
+  String? message;
+  int? rescode;
+  ResultProducts? result;
 
-  String message;
-  int rescode;
-  ResultCatProducts result;
+  ProductsCategory({this.message, this.rescode, this.result});
 
-  factory ProductsCategory.fromJson(Map<String, dynamic> json) =>
-      ProductsCategory(
-        message: json["message"],
-        rescode: json["rescode"],
-        result: ResultCatProducts.fromJson(json["result"]),
-      );
+  ProductsCategory.fromJson(Map<String, dynamic> json) {
+    message = json['message'];
+    rescode = json['rescode'];
+    result = json['result'] != null
+        ? new ResultProducts.fromJson(json['result'])
+        : null;
+  }
 
-  Map<String, dynamic> toJson() => {
-        "message": message,
-        "rescode": rescode,
-        "result": result.toJson(),
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['message'] = this.message;
+    data['rescode'] = this.rescode;
+    if (this.result != null) {
+      data['result'] = this.result!.toJson();
+    }
+    return data;
+  }
 }
 
-class ResultCatProducts {
-  ResultCatProducts({
-    required this.products,
-  });
+class ResultProducts {
+  List<Products>? products;
 
-  List<Product> products;
+  ResultProducts({this.products});
 
-  factory ResultCatProducts.fromJson(Map<String, dynamic> json) =>
-      ResultCatProducts(
-        products: List<Product>.from(
-            json["products"].map((x) => Product.fromJson(x))),
-      );
+  ResultProducts.fromJson(Map<String, dynamic> json) {
+    if (json['products'] != null) {
+      products = <Products>[];
+      json['products'].forEach((v) {
+        products!.add(new Products.fromJson(v));
+      });
+    }
+  }
 
-  Map<String, dynamic> toJson() => {
-        "products": List<dynamic>.from(products.map((x) => x.toJson())),
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.products != null) {
+      data['products'] = this.products!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
 }
 
-class Product {
-  Product({
-    required this.id,
-    required this.name,
-    required this.code,
-    required this.categoryId,
-    required this.image,
-    required this.status,
-  });
+class Products {
+  int? iD;
+  String? name;
+  String? code;
+  int? categoryId;
+  String? images;
+  bool? status;
 
-  int id;
-  String name;
-  String code;
-  int categoryId;
-  String image;
-  bool status;
+  Products(
+      {this.iD,
+      this.name,
+      this.code,
+      this.categoryId,
+      this.images,
+      this.status});
 
-  factory Product.fromJson(Map<String, dynamic> json) => Product(
-        id: json["ID"],
-        name: json["Name"],
-        code: json["Code"],
-        categoryId: json["Category_Id"],
-        image: json["Image"],
-        status: json["Status"],
-      );
+  Products.fromJson(Map<String, dynamic> json) {
+    iD = json['ID'];
+    name = json['Name'];
+    code = json['Code'];
+    categoryId = json['Category_Id'];
+    images = json['Image'];
+    status = json['Status'];
+  }
 
-  Map<String, dynamic> toJson() => {
-        "ID": id,
-        "Name": name,
-        "Code": code,
-        "Category_Id": categoryId,
-        "Image": image,
-        "Status": status,
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['ID'] = this.iD;
+    data['Name'] = this.name;
+    data['Code'] = this.code;
+    data['Category_Id'] = this.categoryId;
+    data['Image'] = this.images;
+    data['Status'] = this.status;
+    return data;
+  }
 }
