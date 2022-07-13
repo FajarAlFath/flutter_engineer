@@ -66,10 +66,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Nama';
-                      } else if (value.length > 10) {
-                        return 'Nama Maksimal 10 karakter';
                       }
-
                       return null;
                     },
                     decoration: InputDecoration(
@@ -236,12 +233,14 @@ class _RegisterPageState extends State<RegisterPage> {
                     onPressed: check == true
                         ? (() async {
                             if (fromKey.currentState!.validate()) {
+                              // ignore: unused_local_variable
                               final response = await authProvider.register(
                                   _nameController.text,
                                   _emailController.text,
                                   _noTelpController.text,
                                   _passwordController.text);
 
+                              // ignore: use_build_context_synchronously
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(builder: (context) {

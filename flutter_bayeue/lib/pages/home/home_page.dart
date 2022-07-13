@@ -77,14 +77,17 @@ class _HomePageState extends State<HomePage> {
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 24),
                         ),
-                        Text(
-                          accountModel != null
-                              ? ' ${accountModel!.result!.user!.name!}'
-                              : '',
-                          overflow: TextOverflow.fade,
-                          maxLines: 1,
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 24),
+                        SizedBox(
+                          width: 200,
+                          child: Text(
+                            accountModel != null
+                                ? ' ${accountModel!.result!.user!.name!}'
+                                : '',
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 24),
+                          ),
                         ),
                       ],
                     ),

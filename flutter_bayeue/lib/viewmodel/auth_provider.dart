@@ -85,11 +85,13 @@ class AuthProvider with ChangeNotifier {
     }
   }
 
-  changeprofile(nama, email, password, phone, File) async {
+  changeprofile(nama, email, password, phone, img) async {
     try {
       final img = await ImagePicker().pickImage(source: ImageSource.gallery);
       await AuthApi.changeprofile(nama, email, password, phone, img);
       notifyListeners();
-    } catch (e) {}
+    } catch (e) {
+      return null;
+    }
   }
 }

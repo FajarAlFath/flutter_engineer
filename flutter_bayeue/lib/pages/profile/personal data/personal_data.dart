@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bayeue/model/api/auth_api.dart';
 import 'package:flutter_bayeue/model/api/profile_api.dart';
 import 'package:flutter_bayeue/model/response_profile_model.dart';
 import 'package:flutter_bayeue/viewmodel/auth_provider.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:unicons/unicons.dart';
 
@@ -89,7 +87,7 @@ class _PersonalDataState extends State<PersonalData> {
                       child: IconButton(
                         onPressed: () {
                           authProvider.changeprofile(
-                              'nama', 'email', 'password', 'phone', 'File');
+                              'nama', 'email', 'password', 'phone', 'img');
                         },
                         icon: const Icon(
                           UniconsLine.camera,

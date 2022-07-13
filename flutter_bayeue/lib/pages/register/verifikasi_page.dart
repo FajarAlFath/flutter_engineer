@@ -82,24 +82,24 @@ class _VerifikasiPageState extends State<VerifikasiPage> {
                     const SizedBox(
                       height: 10,
                     ),
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.center,
-                    //   children: [
-                    //     const Text('Tidak dapat Code?'),
-                    //     GestureDetector(
-                    //       onTap: () {
-                    //         // Nanti isi oi
-                    //       },
-                    //       child: const Text(
-                    //         ' Kirim Ulang OTP',
-                    //         style: TextStyle(
-                    //           color: Colors.blue,
-                    //           fontWeight: FontWeight.bold,
-                    //         ),
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text('Tidak dapat Code?'),
+                        GestureDetector(
+                          onTap: () {
+                            // Nanti isi oi
+                          },
+                          child: const Text(
+                            ' Kirim Ulang OTP',
+                            style: TextStyle(
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                     const SizedBox(
                       height: 100,
                     ),
@@ -116,6 +116,7 @@ class _VerifikasiPageState extends State<VerifikasiPage> {
                               .validation(_otpController.text);
 
                           if (response == true) {
+                            // ignore: use_build_context_synchronously
                             Navigator.pushAndRemoveUntil(context,
                                 MaterialPageRoute(builder: (ctx) {
                               return const LoginPage();
@@ -133,7 +134,6 @@ class _VerifikasiPageState extends State<VerifikasiPage> {
                                     margin: const EdgeInsets.symmetric(
                                         vertical: 15),
                                     padding: const EdgeInsets.all(10),
-                                    height: 140,
                                     width:
                                         MediaQuery.of(context).size.width * 0.8,
                                     child: Column(
@@ -141,7 +141,6 @@ class _VerifikasiPageState extends State<VerifikasiPage> {
                                       children: [
                                         Image.asset(
                                           'assets/images/notification.png',
-                                          height: 60,
                                         ),
                                         const SizedBox(
                                           height: 10,
@@ -173,32 +172,6 @@ class _VerifikasiPageState extends State<VerifikasiPage> {
                         ),
                       ),
                     ),
-                    // ElevatedButton(
-                    //   onPressed: () async {
-                    //     if (fromKey.currentState!.validate()) {
-                    //       final response = await authProvider
-                    //           .validation(_otpController.text);
-                    //       Navigator.pushAndRemoveUntil(context,
-                    //           MaterialPageRoute(
-                    //         builder: (context) {
-                    //           return const CreatePinPage();
-                    //         },
-                    //       ), (route) => false);
-                    //     }
-                    //   },
-                    //   style: ElevatedButton.styleFrom(
-                    //     minimumSize: const Size(double.infinity, 50),
-                    //     shape: RoundedRectangleBorder(
-                    //       borderRadius: BorderRadius.circular(15),
-                    //     ),
-                    //   ),
-                    //   child: const Text(
-                    //     'Verifikasi',
-                    //     style: TextStyle(
-                    //       fontWeight: FontWeight.bold,
-                    //     ),
-                    //   ),
-                    // ),
                   ],
                 ),
               ),
