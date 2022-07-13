@@ -49,20 +49,23 @@ class _PulsaPageState extends State<PulsaPage> {
       ),
       backgroundColor: const Color.fromARGB(255, 247, 240, 240),
       body: GridView.builder(
+          padding: const EdgeInsets.only(left: 10, right: 10),
           shrinkWrap: true,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
+            crossAxisCount: 4,
           ),
           itemCount: catProviders.get != null
-              ? catProviders.get!.result.products.length
+              ? catProviders.get!.result!.products!.length
               : 0,
           itemBuilder: (context, i) {
             return GestureDetector(
-              onTap: () {},
+              onTap: () {
+                print('tertekan');
+              },
               child: Container(
                 height: 120,
                 width: 120,
-                margin: const EdgeInsets.all(20),
+                margin: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
@@ -79,14 +82,14 @@ class _PulsaPageState extends State<PulsaPage> {
                   children: [
                     Image(
                       image: NetworkImage(
-                          catProviders.get!.result.products[i].image),
-                      fit: BoxFit.fill,
+                          catProviders.get!.result!.products![i].images!),
+                      fit: BoxFit.cover,
                     ),
                     const SizedBox(
-                      height: 5,
+                      height: 4,
                     ),
                     Text(
-                      catProviders.get!.result.products[i].name,
+                      catProviders.get!.result!.products![i].name!,
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.black.withOpacity(0.7)),
