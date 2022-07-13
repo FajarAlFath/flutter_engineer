@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bayeue/model/api/auth_api.dart';
 import 'package:flutter_bayeue/model/storage/local_storage.dart';
@@ -8,6 +10,8 @@ import '../model/api/auth_api.dart';
 class AuthProvider with ChangeNotifier {
   bool firstTime = true;
   bool isLogin = false;
+  File? imgGallery;
+  bool isImg = false;
 
   AuthProvider() {
     getData();
@@ -87,7 +91,12 @@ class AuthProvider with ChangeNotifier {
 
   changeprofile(nama, email, password, phone, img) async {
     try {
-      final img = await ImagePicker().pickImage(source: ImageSource.gallery);
+      final imagePicker =
+          await ImagePicker().pickImage(source: ImageSource.gallery);
+      print("${imagePicker!.path}");
+      imgGallery = File(imagePicker.path);
+
+      isImg = true;
       await AuthApi.changeprofile(nama, email, password, phone, img);
       notifyListeners();
     } catch (e) {

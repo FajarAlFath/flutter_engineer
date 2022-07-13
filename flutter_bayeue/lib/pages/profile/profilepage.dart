@@ -11,14 +11,14 @@ import 'package:provider/provider.dart';
 import 'package:unicons/unicons.dart';
 import 'package:flutter_bayeue/pages/login/login_page.dart';
 
-class Profile extends StatefulWidget {
-  const Profile({Key? key}) : super(key: key);
+class ProfilePage extends StatefulWidget {
+  const ProfilePage({Key? key}) : super(key: key);
 
   @override
-  State<Profile> createState() => _ProfileState();
+  State<ProfilePage> createState() => _ProfileState();
 }
 
-class _ProfileState extends State<Profile> {
+class _ProfileState extends State<ProfilePage> {
   AccountModel? accountModel;
   @override
   void initState() {
