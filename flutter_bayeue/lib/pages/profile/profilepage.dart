@@ -83,13 +83,17 @@ class _ProfileState extends State<Profile> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        accountModel != null
-                            ? ' ${accountModel!.result!.user!.name!}'
-                            : '',
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 26,
+                      SizedBox(
+                        width: 200,
+                        child: Text(
+                          accountModel != null
+                              ? ' ${accountModel!.result!.user!.name!}'
+                              : '',
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 26,
+                          ),
                         ),
                       ),
                       Padding(
