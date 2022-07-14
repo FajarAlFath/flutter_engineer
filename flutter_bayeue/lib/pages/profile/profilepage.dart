@@ -28,6 +28,15 @@ class _ProfileState extends State<ProfilePage> {
     });
   }
 
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      getProfileApi();
+    });
+    print(10);
+  }
+
   void getProfileApi() async {
     accountModel = await ProfileApi.getResult();
     setState(() {});

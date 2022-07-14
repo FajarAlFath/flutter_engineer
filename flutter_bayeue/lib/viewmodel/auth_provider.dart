@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bayeue/model/api/auth_api.dart';
+import 'package:flutter_bayeue/model/login_model.dart';
 import 'package:flutter_bayeue/model/storage/local_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -12,6 +13,7 @@ class AuthProvider with ChangeNotifier {
   bool isLogin = false;
   File? imgGallery;
   bool isImg = false;
+  LoginModel data = LoginModel();
 
   AuthProvider() {
     getData();
@@ -45,6 +47,7 @@ class AuthProvider with ChangeNotifier {
   login(email, password) async {
     var response = await AuthApi.login(email, password);
     if (response != null) {
+      data = response;
       SharedPreferences sp = await SharedPreferences.getInstance();
       sp.setString("token", response.data!.token!);
       LocalStorage.setLoginData(email: email, password: password);
@@ -97,7 +100,17 @@ class AuthProvider with ChangeNotifier {
       imgGallery = File(imagePicker.path);
 
       isImg = true;
-      await AuthApi.changeprofile(nama, email, password, phone, img);
+      notifyListeners();
+    } catch (e) {
+      return null;
+    }
+  }
+
+  changeData(nama, email, password, phone) async {
+    try {
+      print(data.data!.token);
+      await AuthApi.changeprofile(
+          nama, email, password, phone, imgGallery!, data.data!.token);
       notifyListeners();
     } catch (e) {
       return null;

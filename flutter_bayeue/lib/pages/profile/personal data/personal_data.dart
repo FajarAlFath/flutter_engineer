@@ -241,10 +241,17 @@ class _PersonalDataState extends State<PersonalData> {
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    minimumSize: const Size(double.infinity, 60),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10))),
-                onPressed: () {
+                  minimumSize: const Size(double.infinity, 60),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                onPressed: () async {
+                  await authProvider.changeData(
+                      _nameController.text,
+                      _emailController.text,
+                      _passwordController.text,
+                      _noTelpController.text);
                   Navigator.pop(context);
                 },
                 child: const Text(

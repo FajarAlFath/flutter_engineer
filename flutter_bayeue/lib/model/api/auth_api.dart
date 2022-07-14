@@ -1,3 +1,6 @@
+import 'dart:io';
+import 'dart:math';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_bayeue/model/api/services.dart';
 import 'package:flutter_bayeue/model/login_model.dart';
@@ -68,20 +71,29 @@ class AuthApi {
     }
   }
 
-  static changeprofile(name, email, password, phone, file) async {
-    var formValidation = {
+  static changeprofile(String name, String email, String password, String phone,
+      File file, token) async {
+    var filename = file.path.split('/').last;
+
+    FormData formValidation = FormData.fromMap({
       "name": name,
       "email": email,
-      "password": password,
+      "password": 'password',
       "phone": phone,
-      "file": file
-    };
+      "file": await MultipartFile.fromFile(file.path, filename: filename)
+    });
+    print(name);
+    print(email);
+    print(password);
+    print(phone);
     try {
       var dio = Dio();
-      var respone = await dio.post(
-        '${Url.baseUrl}/user/profile',
-      );
+      var respone = await dio.post('${Url.baseUrl}/users/profile',
+          data: formValidation,
+          options: Options(headers: {"Authorization": "Bearer $token"}));
     } catch (e) {
+      print(e);
+      print('object');
       return null;
     }
   }
