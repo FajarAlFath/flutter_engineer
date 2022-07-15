@@ -18,7 +18,7 @@ class _NavigationpageState extends State<Navigationpage> {
     const HomePage(),
     const History(),
     const Favorite(),
-    const Profile(),
+    const ProfilePage(),
   ];
 
   @override

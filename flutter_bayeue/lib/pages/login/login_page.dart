@@ -171,6 +171,7 @@ class _LoginPageState extends State<LoginPage> {
                             _emailController.text, _passwordController.text);
 
                         if (response == true) {
+                          // ignore: use_build_context_synchronously
                           Navigator.pushAndRemoveUntil(context,
                               MaterialPageRoute(builder: (ctx) {
                             return const Navigationpage();
@@ -188,7 +189,6 @@ class _LoginPageState extends State<LoginPage> {
                                   margin:
                                       const EdgeInsets.symmetric(vertical: 15),
                                   padding: const EdgeInsets.all(10),
-                                  height: 140,
                                   width:
                                       MediaQuery.of(context).size.width * 0.8,
                                   child: Column(
@@ -196,7 +196,6 @@ class _LoginPageState extends State<LoginPage> {
                                     children: [
                                       Image.asset(
                                         'assets/images/notification.png',
-                                        height: 60,
                                       ),
                                       const SizedBox(
                                         height: 10,

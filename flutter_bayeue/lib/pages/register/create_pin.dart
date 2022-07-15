@@ -12,6 +12,7 @@ class CreatePinPage extends StatefulWidget {
 
 class _CreatePinPageState extends State<CreatePinPage> {
   final fromKey = GlobalKey<FormState>();
+  // ignore: non_constant_identifier_names
   final _CreatePinController = TextEditingController();
   final _pinconfirmController = TextEditingController();
 

@@ -11,18 +11,26 @@ import 'package:provider/provider.dart';
 import 'package:unicons/unicons.dart';
 import 'package:flutter_bayeue/pages/login/login_page.dart';
 
-class Profile extends StatefulWidget {
-  const Profile({Key? key}) : super(key: key);
+class ProfilePage extends StatefulWidget {
+  const ProfilePage({Key? key}) : super(key: key);
 
   @override
-  State<Profile> createState() => _ProfileState();
+  State<ProfilePage> createState() => _ProfileState();
 }
 
-class _ProfileState extends State<Profile> {
+class _ProfileState extends State<ProfilePage> {
   AccountModel? accountModel;
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      getProfileApi();
+    });
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       getProfileApi();
     });
@@ -83,13 +91,17 @@ class _ProfileState extends State<Profile> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        accountModel != null
-                            ? ' ${accountModel!.result!.user!.name!}'
-                            : '',
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 26,
+                      SizedBox(
+                        width: 200,
+                        child: Text(
+                          accountModel != null
+                              ? ' ${accountModel!.result!.user!.name!}'
+                              : '',
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 26,
+                          ),
                         ),
                       ),
                       Padding(
