@@ -1,125 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bayeue/viewmodel/products_providers.dart';
+import 'package:provider/provider.dart';
+import 'package:unicons/unicons.dart';
 
-class ListrikPage extends StatelessWidget {
-  const ListrikPage({Key? key}) : super(key: key);
+class FiturPulsa extends StatefulWidget {
+  const FiturPulsa({Key? key, required this.slug}) : super(key: key);
+
+  final String slug;
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(
-            Icons.arrow_back_ios_new,
-            color: Colors.black,
-            size: 30,
-          ),
-        ),
-        toolbarHeight: kToolbarHeight * 1.5,
-        elevation: 0,
-        backgroundColor: const Color.fromARGB(255, 247, 240, 240),
-        title: const Text(
-          'Listrik',
-          style: TextStyle(
-              fontSize: 30, fontWeight: FontWeight.w500, color: Colors.black),
-        ),
-      ),
-      backgroundColor: const Color.fromARGB(255, 247, 240, 240),
-    );
-  }
+  State<FiturPulsa> createState() => _FiturPulsaState();
 }
 
-class PulsaPage extends StatelessWidget {
-  const PulsaPage({Key? key}) : super(key: key);
-
+class _FiturPulsaState extends State<FiturPulsa> {
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(
-            Icons.arrow_back_ios_new,
-            color: Colors.black,
-            size: 30,
-          ),
-        ),
-        toolbarHeight: kToolbarHeight * 1.5,
-        elevation: 0,
-        backgroundColor: const Color.fromARGB(255, 247, 240, 240),
-        title: const Text(
-          'Pulsa',
-          style: TextStyle(
-              fontSize: 30, fontWeight: FontWeight.w500, color: Colors.black),
-        ),
-      ),
-      backgroundColor: const Color.fromARGB(255, 247, 240, 240),
-    );
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<ProductsDetailProvider>(context, listen: false)
+          .getProductsDetail(slug: widget.slug.toString());
+    });
   }
-}
-
-class PaketDataPage extends StatelessWidget {
-  const PaketDataPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
+        backgroundColor: const Color.fromARGB(255, 247, 240, 240),
+        elevation: 0,
+        leading: InkWell(
+          onTap: () {
             Navigator.pop(context);
           },
-          icon: const Icon(
-            Icons.arrow_back_ios_new,
+          child: const Icon(
+            UniconsLine.angle_left_b,
             color: Colors.black,
-            size: 30,
+            size: 40,
           ),
         ),
-        toolbarHeight: kToolbarHeight * 1.5,
-        elevation: 0,
-        backgroundColor: const Color.fromARGB(255, 247, 240, 240),
-        title: const Text(
-          'Paket Data',
+        title: Text(
+          'Fitur',
           style: TextStyle(
-              fontSize: 30, fontWeight: FontWeight.w500, color: Colors.black),
+              fontWeight: FontWeight.bold,
+              fontSize: 26,
+              color: Colors.black.withOpacity(0.8)),
         ),
       ),
       backgroundColor: const Color.fromARGB(255, 247, 240, 240),
-    );
-  }
-}
-
-class InternetPage extends StatelessWidget {
-  const InternetPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(
-            Icons.arrow_back_ios_new,
-            color: Colors.black,
-            size: 30,
-          ),
-        ),
-        toolbarHeight: kToolbarHeight * 1.5,
-        elevation: 0,
-        backgroundColor: const Color.fromARGB(255, 247, 240, 240),
-        title: const Text(
-          'Internet',
-          style: TextStyle(
-              fontSize: 30, fontWeight: FontWeight.w500, color: Colors.black),
-        ),
-      ),
-      backgroundColor: const Color.fromARGB(255, 247, 240, 240),
+      body: Text('data'),
     );
   }
 }

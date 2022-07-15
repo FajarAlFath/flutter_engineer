@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_bayeue/model/api/services.dart';
 import 'package:flutter_bayeue/model/response_category.dart';
 import 'package:flutter_bayeue/model/response_category_products.dart';
+import 'package:flutter_bayeue/model/response_detail_product.dart';
 
 class CategoryApi {
   Future<List<ResultCategory>?> getCategory() async {
@@ -42,7 +43,27 @@ class ProductsCategoryApi {
       if (e.response != null) {
         print(e.response.toString());
       }
+      return null;
     }
-    return null;
+  }
+}
+
+class ProductsDetailApi {
+  static Future<ResponseDetail?> getProductsDet({required String slug}) async {
+    ResponseDetail? detProducts;
+    try {
+      var dio = Dio();
+      var response = await dio.get('${Url.baseUrl}/detail/$slug');
+      print('detail Products: ${response.data}');
+      if (response.data != null) {
+        detProducts = ResponseDetail.fromJson(response.data);
+      }
+      return detProducts;
+    } on DioError catch (e) {
+      if (e.response != null) {
+        print(e.response.toString());
+      }
+      return null;
+    }
   }
 }

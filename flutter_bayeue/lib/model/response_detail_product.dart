@@ -1,15 +1,15 @@
-class ProductsCategory {
+class ResponseDetail {
   String? message;
   int? rescode;
-  ResultProduct? result;
+  ResultDetProduct? result;
 
-  ProductsCategory({this.message, this.rescode, this.result});
+  ResponseDetail({this.message, this.rescode, this.result});
 
-  ProductsCategory.fromJson(Map<String, dynamic> json) {
+  ResponseDetail.fromJson(Map<String, dynamic> json) {
     message = json['message'];
     rescode = json['rescode'];
     result = json['result'] != null
-        ? new ResultProduct.fromJson(json['result'])
+        ? new ResultDetProduct.fromJson(json['result'])
         : null;
   }
 
@@ -24,61 +24,61 @@ class ProductsCategory {
   }
 }
 
-class ResultProduct {
-  List<Products>? products;
+class ResultDetProduct {
+  List<Detail>? detail;
 
-  ResultProduct({this.products});
+  ResultDetProduct({this.detail});
 
-  ResultProduct.fromJson(Map<String, dynamic> json) {
-    if (json['products'] != null) {
-      products = <Products>[];
-      json['products'].forEach((v) {
-        products!.add(new Products.fromJson(v));
+  ResultDetProduct.fromJson(Map<String, dynamic> json) {
+    if (json['detail'] != null) {
+      detail = <Detail>[];
+      json['detail'].forEach((v) {
+        detail!.add(new Detail.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.products != null) {
-      data['products'] = this.products!.map((v) => v.toJson()).toList();
+    if (this.detail != null) {
+      data['detail'] = this.detail!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
-class Products {
+class Detail {
   int? iD;
-  String? name;
   String? productSlug;
-  int? categoryId;
-  String? image;
+  String? name;
+  String? detailSlug;
+  int? price;
   bool? status;
 
-  Products(
+  Detail(
       {this.iD,
-      this.name,
       this.productSlug,
-      this.categoryId,
-      this.image,
+      this.name,
+      this.detailSlug,
+      this.price,
       this.status});
 
-  Products.fromJson(Map<String, dynamic> json) {
+  Detail.fromJson(Map<String, dynamic> json) {
     iD = json['ID'];
-    name = json['Name'];
     productSlug = json['Product_Slug'];
-    categoryId = json['Category_Id'];
-    image = json['Image'];
+    name = json['Name'];
+    detailSlug = json['Detail_Slug'];
+    price = json['Price'];
     status = json['Status'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['ID'] = this.iD;
-    data['Name'] = this.name;
     data['Product_Slug'] = this.productSlug;
-    data['Category_Id'] = this.categoryId;
-    data['Image'] = this.image;
+    data['Name'] = this.name;
+    data['Detail_Slug'] = this.detailSlug;
+    data['Price'] = this.price;
     data['Status'] = this.status;
     return data;
   }

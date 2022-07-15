@@ -20,7 +20,12 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(
             create: (_) => AuthProvider(),
           ),
-          ChangeNotifierProvider(create: (_) => ProductsCategoryProvider())
+          ChangeNotifierProvider(
+            create: (_) => ProductsCategoryProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => ProductsDetailProvider(),
+          )
         ],
         builder: (context, child) {
           var authProvider = Provider.of<AuthProvider>(context);

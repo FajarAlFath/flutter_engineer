@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bayeue/model/response_category_products.dart';
+import 'package:flutter_bayeue/pages/home/feature/pulsa/fitur/fitur_page.dart';
 import 'package:flutter_bayeue/viewmodel/products_providers.dart';
 import 'package:provider/provider.dart';
 import 'package:unicons/unicons.dart';
@@ -11,7 +11,6 @@ class PulsaPage extends StatefulWidget {
 }
 
 class _PulsaPageState extends State<PulsaPage> {
-  ProductsCategory? catProviders;
   @override
   void initState() {
     super.initState();
@@ -23,8 +22,7 @@ class _PulsaPageState extends State<PulsaPage> {
 
   @override
   Widget build(BuildContext context) {
-    final catProviders =
-        Provider.of<ProductsCategoryProvider>(context, listen: false);
+    final catProviders = Provider.of<ProductsCategoryProvider>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 247, 240, 240),
@@ -60,7 +58,10 @@ class _PulsaPageState extends State<PulsaPage> {
           itemBuilder: (context, i) {
             return GestureDetector(
               onTap: () {
-                print('tertekan');
+                var slug = catProviders.get!.result!.products![i].productSlug!
+                    .toString();
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => FiturPulsa(slug: slug)));
               },
               child: Container(
                 height: 120,
@@ -70,7 +71,7 @@ class _PulsaPageState extends State<PulsaPage> {
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.shade300,
-                      blurRadius: 20,
+                      blurRadius: 5,
                       spreadRadius: 4,
                     )
                   ],
@@ -82,7 +83,7 @@ class _PulsaPageState extends State<PulsaPage> {
                   children: [
                     Image(
                       image: NetworkImage(
-                          catProviders.get!.result!.products![i].images!),
+                          catProviders.get!.result!.products![i].image!),
                       fit: BoxFit.cover,
                     ),
                     const SizedBox(
