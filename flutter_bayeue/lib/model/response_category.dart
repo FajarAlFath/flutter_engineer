@@ -36,26 +36,26 @@ class ResultCategory {
   ResultCategory({
     required this.id,
     required this.name,
-    required this.icon,
+    required this.image,
     required this.status,
   });
 
   int id;
   String name;
-  String icon;
+  String image;
   bool status;
 
   factory ResultCategory.fromJson(Map<String, dynamic> json) => ResultCategory(
         id: json["ID"],
         name: json["Name"],
-        icon: json["Icon"],
+        image: json["Image"],
         status: json["Status"],
       );
 
   Map<String, dynamic> toJson() => {
         "ID": id,
         "Name": name,
-        "Icon": icon,
+        "Image": image,
         "Status": status,
       };
 }

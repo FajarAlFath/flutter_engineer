@@ -22,8 +22,16 @@ class _FiturPulsaState extends State<FiturPulsa> {
     });
   }
 
+  final formkey = GlobalKey<FormState>();
+  final _numberController = TextEditingController();
+  final _nameController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    var mediaQueryData = MediaQuery.of(context);
+    final double widthScreen = mediaQueryData.size.width;
+    final double heightScreen = mediaQueryData.size.height;
+    final details = Provider.of<ProductsDetailProvider>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 247, 240, 240),
@@ -39,15 +47,183 @@ class _FiturPulsaState extends State<FiturPulsa> {
           ),
         ),
         title: Text(
-          'Fitur',
+          widget.slug,
           style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 26,
-              color: Colors.black.withOpacity(0.8)),
+              color: Colors.black.withOpacity(0.7)),
         ),
       ),
       backgroundColor: const Color.fromARGB(255, 247, 240, 240),
-      body: Text('data'),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 25, right: 25),
+          child: Form(
+            key: formkey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  height: 10,
+                ),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    'Phone Number',
+                    style: TextStyle(
+                        color: Colors.black.withOpacity(0.8),
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Column(
+                  children: [
+                    Material(
+                      borderRadius: BorderRadius.circular(10),
+                      elevation: 5,
+                      shadowColor: Colors.grey.withOpacity(0.8),
+                      child: TextFormField(
+                        controller: _numberController,
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'masukkan nomor';
+                          }
+                          return null;
+                        },
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          filled: true,
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide:
+                                  const BorderSide(color: Colors.white)),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          hintText: 'Input Number',
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Material(
+                      borderRadius: BorderRadius.circular(10),
+                      elevation: 1,
+                      shadowColor: Colors.grey,
+                      child: TextFormField(
+                        controller: _nameController,
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'masukkan nama';
+                          }
+                          return null;
+                        },
+                        decoration: InputDecoration(
+                          fillColor: const Color.fromARGB(255, 247, 240, 240),
+                          filled: true,
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide:
+                                  const BorderSide(color: Colors.white)),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          hintText: 'Input Name',
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const Divider(
+                      thickness: 2,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    GridView.builder(
+                        padding: EdgeInsets.only(left: 10, right: 10),
+                        shrinkWrap: true,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisSpacing: 25,
+                          childAspectRatio: 18 / 9,
+                          crossAxisCount: 2,
+                        ),
+                        itemCount: details.getd != null
+                            ? details.getd!.result!.detail!.length
+                            : 0,
+                        itemBuilder: (context, i) {
+                          return GestureDetector(
+                            onTap: () {
+                              print('tertekan');
+                            },
+                            child: Container(
+                                decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.shade300,
+                                      blurRadius: 6,
+                                      spreadRadius: 3,
+                                    )
+                                  ],
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 10),
+                                      child: Text(
+                                        details.getd!.result!.detail![i].name!,
+                                        style: TextStyle(
+                                            fontSize: 23,
+                                            fontWeight: FontWeight.bold,
+                                            color:
+                                                Colors.black.withOpacity(0.8)),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 5),
+                                    Row(
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 10),
+                                          child: Text(
+                                            'Price Rp ',
+                                            style: TextStyle(
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black
+                                                    .withOpacity(0.8)),
+                                          ),
+                                        ),
+                                        Text(
+                                          details.getd!.result!.detail![i].price
+                                              .toString(),
+                                          style: const TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                )),
+                          );
+                        }),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

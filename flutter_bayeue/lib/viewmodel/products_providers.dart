@@ -13,10 +13,10 @@ class ProductsCategoryProvider with ChangeNotifier {
 }
 
 class ProductsDetailProvider with ChangeNotifier {
-  ResponseDetail? get;
+  ResponseDetail? getd;
 
   getProductsDetail({required String slug}) async {
-    get = await ProductsDetailApi.getProductsDet(slug: slug);
+    getd = await ProductsDetailApi.getProductsDet(slug: slug);
     notifyListeners();
   }
 }
