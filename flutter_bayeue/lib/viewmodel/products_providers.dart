@@ -6,8 +6,8 @@ import 'package:flutter_bayeue/model/response_detail_product.dart';
 class ProductsCategoryProvider with ChangeNotifier {
   ProductsCategory? get;
 
-  getProductsData() async {
-    get = await ProductsCategoryApi.getProductsCat(id: '1');
+  getProductsData({required String id}) async {
+    get = await ProductsCategoryApi.getProductsCat(id: id);
     notifyListeners();
   }
 }

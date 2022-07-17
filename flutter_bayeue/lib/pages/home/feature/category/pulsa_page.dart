@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bayeue/pages/home/feature/pulsa/fitur/fitur_page.dart';
+import 'package:flutter_bayeue/pages/home/feature/category/fitur/fitur_page.dart';
+
 import 'package:flutter_bayeue/viewmodel/products_providers.dart';
 import 'package:provider/provider.dart';
 import 'package:unicons/unicons.dart';
 
-class PulsaPage extends StatefulWidget {
-  const PulsaPage({Key? key}) : super(key: key);
+class CategoryPage extends StatefulWidget {
+  const CategoryPage({Key? key, required this.id}) : super(key: key);
   @override
-  State<PulsaPage> createState() => _PulsaPageState();
+  State<CategoryPage> createState() => _CategoryPageState();
+  final String id;
 }
 
-class _PulsaPageState extends State<PulsaPage> {
+class _CategoryPageState extends State<CategoryPage> {
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       Provider.of<ProductsCategoryProvider>(context, listen: false)
-          .getProductsData();
+          .getProductsData(id: widget.id);
     });
   }
 
@@ -61,7 +63,7 @@ class _PulsaPageState extends State<PulsaPage> {
                 var slug = catProviders.get!.result!.products![i].productSlug!
                     .toString();
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => FiturPulsa(slug: slug)));
+                    MaterialPageRoute(builder: (_) => FiturPage(slug: slug)));
               },
               child: Container(
                 height: 120,

@@ -3,16 +3,16 @@ import 'package:flutter_bayeue/viewmodel/products_providers.dart';
 import 'package:provider/provider.dart';
 import 'package:unicons/unicons.dart';
 
-class FiturPulsa extends StatefulWidget {
-  const FiturPulsa({Key? key, required this.slug}) : super(key: key);
+class FiturPage extends StatefulWidget {
+  const FiturPage({Key? key, required this.slug}) : super(key: key);
 
   final String slug;
 
   @override
-  State<FiturPulsa> createState() => _FiturPulsaState();
+  State<FiturPage> createState() => _FiturPageState();
 }
 
-class _FiturPulsaState extends State<FiturPulsa> {
+class _FiturPageState extends State<FiturPage> {
   @override
   void initState() {
     super.initState();
@@ -22,15 +22,18 @@ class _FiturPulsaState extends State<FiturPulsa> {
     });
   }
 
+  plus({required int a}) {
+    int b = 500;
+    var c = a + b;
+    return c.toString();
+  }
+
   final formkey = GlobalKey<FormState>();
   final _numberController = TextEditingController();
   final _nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    var mediaQueryData = MediaQuery.of(context);
-    final double widthScreen = mediaQueryData.size.width;
-    final double heightScreen = mediaQueryData.size.height;
     final details = Provider.of<ProductsDetailProvider>(context);
     return Scaffold(
       appBar: AppBar(
@@ -146,12 +149,12 @@ class _FiturPulsaState extends State<FiturPulsa> {
                       height: 10,
                     ),
                     GridView.builder(
-                        padding: EdgeInsets.only(left: 10, right: 10),
+                        padding: const EdgeInsets.only(left: 10, right: 10),
                         shrinkWrap: true,
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisSpacing: 25,
-                          childAspectRatio: 18 / 9,
+                          crossAxisSpacing: 40,
+                          childAspectRatio: 18 / 10,
                           crossAxisCount: 2,
                         ),
                         itemCount: details.getd != null
@@ -175,13 +178,16 @@ class _FiturPulsaState extends State<FiturPulsa> {
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsets.only(left: 10),
+                                      padding: const EdgeInsets.only(
+                                          left: 10, top: 20),
                                       child: Text(
-                                        details.getd!.result!.detail![i].name!,
+                                        plus(
+                                            a: details.getd!.result!.detail![i]
+                                                .price!),
                                         style: TextStyle(
                                             fontSize: 23,
                                             fontWeight: FontWeight.bold,
@@ -189,7 +195,6 @@ class _FiturPulsaState extends State<FiturPulsa> {
                                                 Colors.black.withOpacity(0.8)),
                                       ),
                                     ),
-                                    const SizedBox(height: 5),
                                     Row(
                                       children: [
                                         Padding(
