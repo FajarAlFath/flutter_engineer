@@ -1,10 +1,11 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bayeue/model/api/category_api.dart';
 import 'package:flutter_bayeue/model/api/profile_api.dart';
 import 'package:flutter_bayeue/model/response_category.dart';
 import 'package:flutter_bayeue/model/response_profile_model.dart';
-import 'package:flutter_bayeue/pages/home/components/category_list.dart';
-import 'package:flutter_bayeue/pages/home/components/icons_bayeue.dart';
+import 'package:flutter_bayeue/pages/home/feature/category/pulsa_page.dart';
 import 'package:flutter_bayeue/pages/home/promo/promo1.dart';
 import 'package:flutter_bayeue/pages/home/promo/promo2.dart';
 import 'package:unicons/unicons.dart';
@@ -36,7 +37,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // final category = Provider.of<CategoryProvider>(context)
+    var mediaQueryData = MediaQuery.of(context);
+    final double widthScreen = mediaQueryData.size.width;
 
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 247, 240, 240),
@@ -185,7 +187,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               const SizedBox(
-                height: 5,
+                height: 15,
               ),
 
               //Feature Display category product
@@ -194,63 +196,63 @@ class _HomePageState extends State<HomePage> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     List<ResultCategory> listresult = snapshot.data!;
-                    return Padding(
-                      padding: const EdgeInsets.only(left: 10, right: 10),
-                      child: GridView.builder(
-                          shrinkWrap: true,
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3,
-                          ),
-                          itemCount: listresult.length,
-                          itemBuilder: (context, i) {
-                            return GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (_) => categoryClass.elementAt(i),
-                                  ),
-                                );
-                              },
-                              child: Container(
-                                height: 120,
-                                width: 120,
-                                margin: const EdgeInsets.all(20),
-                                decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.shade300,
-                                      blurRadius: 20,
-                                      spreadRadius: 4,
-                                    )
-                                  ],
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10),
+                    return GridView.builder(
+                        padding: const EdgeInsets.only(left: 35, right: 35),
+                        shrinkWrap: true,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          childAspectRatio: 16 / 12,
+                          crossAxisSpacing: 30,
+                          crossAxisCount: 3,
+                        ),
+                        itemCount: listresult.length,
+                        itemBuilder: (context, i) {
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => CategoryPage(
+                                      id: listresult[i].id.toString()),
                                 ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(
-                                      iconsCategory.elementAt(i),
-                                      size: 30,
-                                      color: Colors.blue,
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      listresult[i].name,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black.withOpacity(0.7)),
-                                    ),
-                                  ],
-                                ),
+                              );
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.shade300,
+                                    blurRadius: 20,
+                                    spreadRadius: 4,
+                                  )
+                                ],
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
                               ),
-                            );
-                          }),
-                    );
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    width: 30,
+                                    height: 30,
+                                    child: Image(
+                                      image: NetworkImage(listresult[i].image),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    listresult[i].name,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black.withOpacity(0.7)),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        });
                   } else {
                     return const CircularProgressIndicator();
                   }
@@ -259,7 +261,7 @@ class _HomePageState extends State<HomePage> {
               //End of Display category product
 
               const SizedBox(
-                height: 5,
+                height: 15,
               ),
               Container(
                 padding: const EdgeInsets.only(right: 160),
