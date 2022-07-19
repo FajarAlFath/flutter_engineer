@@ -120,20 +120,12 @@ class _CreatePinPageState extends State<CreatePinPage> {
                       borderRadius: BorderRadius.circular(15),
                     ),
                   ),
-                  onPressed: (() async {
-                    if (fromKey.currentState!.validate()) {
-                      bool response = await authprovider
-                          .validation(_pinconfirmController.text);
-
-                      if (response == true) {
-                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
-                          builder: (context) {
-                            return const LoginPage();
-                          },
-                        ), (route) => false);
-                      }
-                    }
-                  }),
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(context,
+                        MaterialPageRoute(builder: (ctx) {
+                      return LoginPage();
+                    }), (route) => false);
+                  },
                   child: const Text(
                     'Create Pin',
                     style: TextStyle(

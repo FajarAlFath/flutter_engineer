@@ -119,7 +119,7 @@ class _VerifikasiPageState extends State<VerifikasiPage> {
                             // ignore: use_build_context_synchronously
                             Navigator.pushAndRemoveUntil(context,
                                 MaterialPageRoute(builder: (ctx) {
-                              return const LoginPage();
+                              return const CreatePinPage();
                             }), (route) => false);
                           } else {
                             showDialog(
