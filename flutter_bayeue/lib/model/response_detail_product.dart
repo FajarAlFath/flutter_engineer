@@ -9,16 +9,16 @@ class ResponseDetail {
     message = json['message'];
     rescode = json['rescode'];
     result = json['result'] != null
-        ? new ResultDetProduct.fromJson(json['result'])
+        ? ResultDetProduct.fromJson(json['result'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['message'] = this.message;
-    data['rescode'] = this.rescode;
-    if (this.result != null) {
-      data['result'] = this.result!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['message'] = message;
+    data['rescode'] = rescode;
+    if (result != null) {
+      data['result'] = result!.toJson();
     }
     return data;
   }
@@ -33,15 +33,15 @@ class ResultDetProduct {
     if (json['detail'] != null) {
       detail = <Detail>[];
       json['detail'].forEach((v) {
-        detail!.add(new Detail.fromJson(v));
+        detail!.add(Detail.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.detail != null) {
-      data['detail'] = this.detail!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (detail != null) {
+      data['detail'] = detail!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -73,13 +73,13 @@ class Detail {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['ID'] = this.iD;
-    data['Product_Slug'] = this.productSlug;
-    data['Name'] = this.name;
-    data['Detail_Slug'] = this.detailSlug;
-    data['Price'] = this.price;
-    data['Status'] = this.status;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['ID'] = iD;
+    data['Product_Slug'] = productSlug;
+    data['Name'] = name;
+    data['Detail_Slug'] = detailSlug;
+    data['Price'] = price;
+    data['Status'] = status;
     return data;
   }
 }

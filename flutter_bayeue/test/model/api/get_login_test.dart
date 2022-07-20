@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_bayeue/model/api/services.dart';
-import 'package:flutter_bayeue/model/login_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

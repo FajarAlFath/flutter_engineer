@@ -123,7 +123,7 @@ class _CreatePinPageState extends State<CreatePinPage> {
                   onPressed: () {
                     Navigator.pushAndRemoveUntil(context,
                         MaterialPageRoute(builder: (ctx) {
-                      return LoginPage();
+                      return const LoginPage();
                     }), (route) => false);
                   },
                   child: const Text(

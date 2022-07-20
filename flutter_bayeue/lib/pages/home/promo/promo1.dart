@@ -46,7 +46,7 @@ class Promo1 extends StatelessWidget {
               height: 20,
             ),
             const Padding(
-              padding: const EdgeInsets.only(right: 150),
+              padding: EdgeInsets.only(right: 150),
               child: Text(
                 'Shopping for Vegetables',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),

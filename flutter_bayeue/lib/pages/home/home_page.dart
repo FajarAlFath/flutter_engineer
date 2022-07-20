@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bayeue/model/api/category_api.dart';
 import 'package:flutter_bayeue/model/api/profile_api.dart';
