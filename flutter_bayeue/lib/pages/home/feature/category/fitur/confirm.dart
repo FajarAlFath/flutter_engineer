@@ -1,7 +1,6 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bayeue/model/response_checkout.dart';
+import 'package:flutter_bayeue/pages/home/navigation_bar.dart';
 import 'package:unicons/unicons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -19,8 +18,9 @@ class Confirm extends StatefulWidget {
 
 class _ConfirmState extends State<Confirm> {
   Future<void> openUrl({required url}) async {
-    if (await canLaunchUrl(url)) {
+    if (!await canLaunchUrl(url)) {
       await launchUrl(url,
+          mode: LaunchMode.platformDefault,
           webViewConfiguration: const WebViewConfiguration(
             enableJavaScript: true,
           ));
@@ -299,14 +299,15 @@ class _ConfirmState extends State<Confirm> {
                                       splashColor: Colors.blue.withAlpha(8),
                                       onTap: () async {
                                         Uri url = Uri.parse(widget
-                                            .data!.xenditInvoice!.invoiceUrl!);
+                                            .data!.xenditInvoice!.invoiceUrl
+                                            .toString());
                                         await openUrl(url: url);
-                                        // Navigator.pushAndRemoveUntil(
-                                        //     context,
-                                        //     MaterialPageRoute(
-                                        //         builder: ((context) =>
-                                        //             const Navigationpage())),
-                                        //     (route) => false);
+                                        Navigator.pushAndRemoveUntil(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: ((context) =>
+                                                    const Navigationpage())),
+                                            (route) => false);
                                       },
                                       child: Container(
                                         height: 50,
