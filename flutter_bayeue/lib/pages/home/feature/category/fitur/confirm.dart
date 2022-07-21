@@ -23,9 +23,9 @@ class _ConfirmState extends State<Confirm> {
   Future<void> openUrl({required url}) async {
     if (await canLaunchUrl(url)) {
       await launchUrl(url,
-          mode: LaunchMode.platformDefault,
-          webViewConfiguration:
-              const WebViewConfiguration(enableJavaScript: true));
+          webViewConfiguration: const WebViewConfiguration(
+            enableJavaScript: true,
+          ));
     }
   }
 
@@ -303,12 +303,12 @@ class _ConfirmState extends State<Confirm> {
                                         Uri url = Uri.parse(widget
                                             .data!.xenditInvoice!.invoiceUrl!);
                                         await openUrl(url: url);
-                                        Navigator.pushAndRemoveUntil(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: ((context) =>
-                                                    const Navigationpage())),
-                                            (route) => false);
+                                        // Navigator.pushAndRemoveUntil(
+                                        //     context,
+                                        //     MaterialPageRoute(
+                                        //         builder: ((context) =>
+                                        //             const Navigationpage())),
+                                        //     (route) => false);
                                       },
                                       child: Container(
                                         height: 50,

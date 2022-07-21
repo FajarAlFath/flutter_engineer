@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_new, prefer_collection_literals
+
 class CheckoutResponse {
   String? message;
   int? rescode;
@@ -18,14 +20,14 @@ class CheckoutResponse {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['message'] = this.message;
-    data['rescode'] = this.rescode;
-    if (this.result != null) {
-      data['result'] = this.result!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['message'] = message;
+    data['rescode'] = rescode;
+    if (result != null) {
+      data['result'] = result!.toJson();
     }
-    if (this.xenditInvoice != null) {
-      data['xendit_invoice'] = this.xenditInvoice!.toJson();
+    if (xenditInvoice != null) {
+      data['xendit_invoice'] = xenditInvoice!.toJson();
     }
     return data;
   }
@@ -50,15 +52,15 @@ class Result {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.category != null) {
-      data['category'] = this.category!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (category != null) {
+      data['category'] = category!.toJson();
     }
-    if (this.checkout != null) {
-      data['checkout'] = this.checkout!.toJson();
+    if (checkout != null) {
+      data['checkout'] = checkout!.toJson();
     }
-    if (this.product != null) {
-      data['product'] = this.product!.toJson();
+    if (product != null) {
+      data['product'] = product!.toJson();
     }
     return data;
   }
@@ -74,8 +76,8 @@ class Category {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['Name'] = this.name;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['Name'] = name;
     return data;
   }
 }
@@ -110,13 +112,13 @@ class Checkout {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['Product_Detail_code'] = this.productDetailCode;
-    data['Transaction_Code'] = this.transactionCode;
-    data['ID_Customer'] = this.iDCustomer;
-    data['Customer_Name'] = this.customerName;
-    data['Price'] = this.price;
-    data['Fee'] = this.fee;
-    data['Amount'] = this.amount;
+    data['Product_Detail_code'] = productDetailCode;
+    data['Transaction_Code'] = transactionCode;
+    data['ID_Customer'] = iDCustomer;
+    data['Customer_Name'] = customerName;
+    data['Price'] = price;
+    data['Fee'] = fee;
+    data['Amount'] = amount;
     return data;
   }
 }
@@ -134,8 +136,8 @@ class Product {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['Name'] = this.name;
-    data['Image'] = this.image;
+    data['Name'] = name;
+    data['Image'] = image;
     return data;
   }
 }
@@ -246,46 +248,45 @@ class XenditInvoice {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['invoice_url'] = this.invoiceUrl;
-    data['user_id'] = this.userId;
-    data['external_id'] = this.externalId;
-    data['status'] = this.status;
-    data['merchant_name'] = this.merchantName;
-    data['merchant_profile_picture_url'] = this.merchantProfilePictureUrl;
-    data['amount'] = this.amount;
-    if (this.items != null) {
-      data['items'] = this.items!.map((v) => v.toJson()).toList();
+    data['id'] = id;
+    data['invoice_url'] = invoiceUrl;
+    data['user_id'] = userId;
+    data['external_id'] = externalId;
+    data['status'] = status;
+    data['merchant_name'] = merchantName;
+    data['merchant_profile_picture_url'] = merchantProfilePictureUrl;
+    data['amount'] = amount;
+    if (items != null) {
+      data['items'] = items!.map((v) => v.toJson()).toList();
     }
-    if (this.fees != null) {
-      data['fees'] = this.fees!.map((v) => v.toJson()).toList();
+    if (fees != null) {
+      data['fees'] = fees!.map((v) => v.toJson()).toList();
     }
-    data['payer_email'] = this.payerEmail;
-    data['description'] = this.description;
-    data['expiry_date'] = this.expiryDate;
-    if (this.customer != null) {
-      data['customer'] = this.customer!.toJson();
+    data['payer_email'] = payerEmail;
+    data['description'] = description;
+    data['expiry_date'] = expiryDate;
+    if (customer != null) {
+      data['customer'] = customer!.toJson();
     }
-    if (this.customerNotificationPreference != null) {
+    if (customerNotificationPreference != null) {
       data['customer_notification_preference'] =
-          this.customerNotificationPreference!.toJson();
+          customerNotificationPreference!.toJson();
     }
-    if (this.availableBanks != null) {
-      data['available_banks'] =
-          this.availableBanks!.map((v) => v.toJson()).toList();
+    if (availableBanks != null) {
+      data['available_banks'] = availableBanks!.map((v) => v.toJson()).toList();
     }
-    if (this.availableEwallets != null) {
+    if (availableEwallets != null) {
       data['available_ewallets'] =
-          this.availableEwallets!.map((v) => v.toJson()).toList();
+          availableEwallets!.map((v) => v.toJson()).toList();
     }
-    if (this.availableRetailOutlets != null) {
+    if (availableRetailOutlets != null) {
       data['available_retail_outlets'] =
-          this.availableRetailOutlets!.map((v) => v.toJson()).toList();
+          availableRetailOutlets!.map((v) => v.toJson()).toList();
     }
-    data['should_send_email'] = this.shouldSendEmail;
-    data['created'] = this.created;
-    data['updated'] = this.updated;
-    data['currency'] = this.currency;
+    data['should_send_email'] = shouldSendEmail;
+    data['created'] = created;
+    data['updated'] = updated;
+    data['currency'] = currency;
     return data;
   }
 }
@@ -307,10 +308,10 @@ class Items {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    data['price'] = this.price;
-    data['quantity'] = this.quantity;
-    data['category'] = this.category;
+    data['name'] = name;
+    data['price'] = price;
+    data['quantity'] = quantity;
+    data['category'] = category;
     return data;
   }
 }
@@ -328,8 +329,8 @@ class Fees {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['type'] = this.type;
-    data['value'] = this.value;
+    data['type'] = type;
+    data['value'] = value;
     return data;
   }
 }
@@ -349,9 +350,9 @@ class Customer {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['given_names'] = this.givenNames;
-    data['email'] = this.email;
-    data['mobile_number'] = this.mobileNumber;
+    data['given_names'] = givenNames;
+    data['email'] = email;
+    data['mobile_number'] = mobileNumber;
     return data;
   }
 }
@@ -377,10 +378,10 @@ class CustomerNotificationPreference {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['invoice_created'] = this.invoiceCreated;
-    data['invoice_reminder'] = this.invoiceReminder;
-    data['invoice_paid'] = this.invoicePaid;
-    data['invoice_expired'] = this.invoiceExpired;
+    data['invoice_created'] = invoiceCreated;
+    data['invoice_reminder'] = invoiceReminder;
+    data['invoice_paid'] = invoicePaid;
+    data['invoice_expired'] = invoiceExpired;
     return data;
   }
 }
@@ -415,13 +416,13 @@ class AvailableBanks {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['bank_code'] = this.bankCode;
-    data['collection_type'] = this.collectionType;
-    data['bank_account_number'] = this.bankAccountNumber;
-    data['transfer_amount'] = this.transferAmount;
-    data['bank_branch'] = this.bankBranch;
-    data['account_holder_name'] = this.accountHolderName;
-    data['identity_amount'] = this.identityAmount;
+    data['bank_code'] = bankCode;
+    data['collection_type'] = collectionType;
+    data['bank_account_number'] = bankAccountNumber;
+    data['transfer_amount'] = transferAmount;
+    data['bank_branch'] = bankBranch;
+    data['account_holder_name'] = accountHolderName;
+    data['identity_amount'] = identityAmount;
     return data;
   }
 }
@@ -437,7 +438,7 @@ class AvailableEwallets {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['ewallet_type'] = this.ewalletType;
+    data['ewallet_type'] = ewalletType;
     return data;
   }
 }
@@ -453,7 +454,7 @@ class AvailableRetailOutlets {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['retail_outlet_name'] = this.retailOutletName;
+    data['retail_outlet_name'] = retailOutletName;
     return data;
   }
 }

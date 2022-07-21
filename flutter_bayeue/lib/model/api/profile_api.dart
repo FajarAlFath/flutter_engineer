@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:dio/dio.dart';
 import 'package:flutter_bayeue/model/api/services.dart';
 import 'package:flutter_bayeue/model/response_profile_model.dart';
