@@ -30,9 +30,9 @@ class _ConfirmState extends State<Confirm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 247, 240, 240),
+      backgroundColor: const Color.fromARGB(255, 240, 244, 247),
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 247, 240, 240),
+        backgroundColor: const Color.fromARGB(255, 240, 244, 247),
         elevation: 0,
         leading: InkWell(
           onTap: () {

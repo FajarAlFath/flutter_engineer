@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'dart:io';
+import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bayeue/model/api/auth_api.dart';
@@ -11,6 +12,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../model/api/auth_api.dart';
 
 class AuthProvider with ChangeNotifier {
+  String? _tempEmail;
+  String? _tempPassword;
   bool firstTime = true;
   bool isLogin = false;
   File? imgGallery;
@@ -20,6 +23,11 @@ class AuthProvider with ChangeNotifier {
   AuthProvider() {
     getData();
     init();
+  }
+
+  Future<void> addTemp(email, password) async {
+    _tempEmail = email;
+    _tempPassword = password;
   }
 
   getData() async {
@@ -76,6 +84,7 @@ class AuthProvider with ChangeNotifier {
     code,
   ) async {
     var response = await AuthApi.validation(code);
+    login(_tempEmail, _tempPassword);
     if (response != null) {
       return true;
     } else {
@@ -84,9 +93,11 @@ class AuthProvider with ChangeNotifier {
   }
 
   pin(
-    pin,
+    String pin,
   ) async {
-    var response = await AuthApi.pin(pin);
+    var response = await AuthApi.pin(pin, data.data!.token);
+    print(data.data!.token);
+    print(response);
     if (response != null) {
       return true;
     } else {
