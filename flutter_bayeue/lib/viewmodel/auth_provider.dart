@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
@@ -96,7 +98,7 @@ class AuthProvider with ChangeNotifier {
     try {
       final imagePicker =
           await ImagePicker().pickImage(source: ImageSource.gallery);
-      print("${imagePicker!.path}");
+      print(imagePicker!.path);
       imgGallery = File(imagePicker.path);
 
       isImg = true;

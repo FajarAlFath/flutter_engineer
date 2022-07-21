@@ -4,7 +4,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter_bayeue/model/api/services.dart';
 import 'package:flutter_bayeue/model/response_category.dart';
 import 'package:flutter_bayeue/model/response_category_products.dart';
+import 'package:flutter_bayeue/model/response_checkout.dart';
 import 'package:flutter_bayeue/model/response_detail_product.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CategoryApi {
   Future<List<ResultCategory>?> getCategory() async {
@@ -65,5 +67,34 @@ class ProductsDetailApi {
       }
       return null;
     }
+  }
+}
+
+class CheckoutProducts {
+  static Future<CheckoutResponse?> checkout(
+      {required idCustomer,
+      required customerName,
+      required productslug}) async {
+    var formCheckout = {
+      'id_customer': idCustomer,
+      'customer_name': customerName
+    };
+    try {
+      SharedPreferences sp = await SharedPreferences.getInstance();
+      var token = sp.getString('token');
+      var dio = Dio();
+      var response = await dio.post(
+          '${Url.baseUrl}/users/checkout/$productslug',
+          data: formCheckout,
+          options: Options(headers: {'Authorization': 'Bearer $token'}));
+      print(response);
+      var checkoutdata = CheckoutResponse.fromJson(response.data);
+      return checkoutdata;
+    } on DioError catch (e) {
+      if (e.response != null) {
+        print(e.response.toString());
+      }
+    }
+    return null;
   }
 }

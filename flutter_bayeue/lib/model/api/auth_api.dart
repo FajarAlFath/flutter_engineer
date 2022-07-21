@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print, unused_local_variable
+
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter_bayeue/model/api/services.dart';

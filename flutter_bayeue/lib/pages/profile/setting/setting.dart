@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bayeue/model/api/category_api.dart';
 import 'package:unicons/unicons.dart';
 
 class Setting extends StatefulWidget {
@@ -10,8 +9,6 @@ class Setting extends StatefulWidget {
 }
 
 class _SettingState extends State<Setting> {
-  final CategoryApi _api = CategoryApi();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

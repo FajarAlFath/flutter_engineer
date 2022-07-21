@@ -35,9 +35,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    var mediaQueryData = MediaQuery.of(context);
-    final double widthScreen = mediaQueryData.size.width;
-
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 247, 240, 240),
       body: SafeArea(
@@ -50,7 +47,6 @@ class _HomePageState extends State<HomePage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
@@ -199,7 +195,8 @@ class _HomePageState extends State<HomePage> {
                         shrinkWrap: true,
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
-                          childAspectRatio: 16 / 12,
+                          mainAxisSpacing: 15,
+                          childAspectRatio: 16 / 16,
                           crossAxisSpacing: 30,
                           crossAxisCount: 3,
                         ),
@@ -211,7 +208,9 @@ class _HomePageState extends State<HomePage> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (_) => CategoryPage(
-                                      id: listresult[i].id.toString()),
+                                    id: listresult[i].id.toString(),
+                                    name: listresult[i].name,
+                                  ),
                                 ),
                               );
                             },
@@ -243,6 +242,7 @@ class _HomePageState extends State<HomePage> {
                                   Text(
                                     listresult[i].name,
                                     style: TextStyle(
+                                        overflow: TextOverflow.ellipsis,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.black.withOpacity(0.7)),
                                   ),

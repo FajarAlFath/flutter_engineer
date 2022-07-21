@@ -6,10 +6,12 @@ import 'package:provider/provider.dart';
 import 'package:unicons/unicons.dart';
 
 class CategoryPage extends StatefulWidget {
-  const CategoryPage({Key? key, required this.id}) : super(key: key);
+  const CategoryPage({Key? key, required this.id, required this.name})
+      : super(key: key);
   @override
   State<CategoryPage> createState() => _CategoryPageState();
   final String id;
+  final String name;
 }
 
 class _CategoryPageState extends State<CategoryPage> {
@@ -40,7 +42,7 @@ class _CategoryPageState extends State<CategoryPage> {
           ),
         ),
         title: Text(
-          'Pulsa',
+          widget.name,
           style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 26,
@@ -52,6 +54,7 @@ class _CategoryPageState extends State<CategoryPage> {
           padding: const EdgeInsets.only(left: 10, right: 10),
           shrinkWrap: true,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            mainAxisSpacing: 15,
             crossAxisCount: 4,
           ),
           itemCount: catProviders.get != null
