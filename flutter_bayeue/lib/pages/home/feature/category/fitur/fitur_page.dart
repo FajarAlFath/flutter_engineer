@@ -178,7 +178,7 @@ class _FiturPageState extends State<FiturPage> {
                               if (formkey.currentState!.validate()) {
                                 String slugs = details
                                     .getd!.result!.detail![i].detailSlug!;
-                                final response = await postd.post(
+                                await postd.post(
                                     idCustomer: _numberController.text,
                                     customerName: _nameController.text,
                                     productslug: slugs);

@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bayeue/model/response_checkout.dart';
-import 'package:flutter_bayeue/pages/home/home_page.dart';
+
 import 'package:flutter_bayeue/pages/home/navigation_bar.dart';
 import 'package:unicons/unicons.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -20,7 +20,6 @@ class Confirm extends StatefulWidget {
 }
 
 class _ConfirmState extends State<Confirm> {
-  @override
   Future<void> openUrl({required url}) async {
     if (await canLaunchUrl(url)) {
       await launchUrl(url,
