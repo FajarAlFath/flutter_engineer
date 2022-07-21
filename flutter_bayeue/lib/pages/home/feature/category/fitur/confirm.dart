@@ -2,8 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bayeue/model/response_checkout.dart';
-
-import 'package:flutter_bayeue/pages/home/navigation_bar.dart';
 import 'package:unicons/unicons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
