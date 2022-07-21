@@ -20,6 +20,8 @@ class _PersonalDataState extends State<PersonalData> {
   final _passwordController = TextEditingController();
 
   AccountModel? accountModel;
+  bool passwordVisible = false;
+  bool invisibility = true;
 
   @override
   void initState() {
@@ -225,13 +227,32 @@ class _PersonalDataState extends State<PersonalData> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: TextFormField(
+                  obscureText: invisibility,
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Password Tidak Boleh Kosong';
                     }
+                    return null;
                   },
                   controller: _passwordController,
                   decoration: InputDecoration(
+                    suffixIcon: IconButton(
+                      splashRadius: 20,
+                      onPressed: () {
+                        setState(
+                          () {
+                            if (invisibility == false) {
+                              invisibility = true;
+                            } else {
+                              invisibility = false;
+                            }
+                          },
+                        );
+                      },
+                      icon: invisibility
+                          ? const Icon(Icons.visibility_off)
+                          : const Icon(Icons.visibility),
+                    ),
                     filled: true,
                     fillColor: Colors.white,
                     hintText: 'Masukan Password',

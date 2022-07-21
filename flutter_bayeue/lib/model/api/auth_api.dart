@@ -76,22 +76,17 @@ class AuthApi {
     FormData formValidation = FormData.fromMap({
       "name": name,
       "email": email,
-      "password": 'password',
+      "password": password,
       "phone": phone,
       "file": await MultipartFile.fromFile(file.path, filename: filename)
     });
-    print(name);
-    print(email);
-    print(password);
-    print(phone);
+
     try {
       var dio = Dio();
       var respone = await dio.post('${Url.baseUrl}/users/profile',
           data: formValidation,
           options: Options(headers: {"Authorization": "Bearer $token"}));
     } catch (e) {
-      print(e);
-      print('object');
       return null;
     }
   }

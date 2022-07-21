@@ -12,7 +12,7 @@ class AccountModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['message'] = message;
     data['rescode'] = rescode;
     if (result != null) {
@@ -35,7 +35,7 @@ class Result {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     if (account != null) {
       data['account'] = account!.toJson();
     }
@@ -60,7 +60,7 @@ class Account {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['ID'] = iD;
     data['Phone'] = phone;
     data['Saldo'] = saldo;
@@ -86,7 +86,7 @@ class User {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['Name'] = name;
     data['Email'] = email;
     data['Phone'] = phone;

@@ -232,7 +232,7 @@ class _ProfileState extends State<ProfilePage> {
                 splashColor: Colors.blue.withAlpha(50),
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => HelpSupport()));
+                      MaterialPageRoute(builder: (_) => const HelpSupport()));
                 },
                 child: SizedBox(
                   height: 80,

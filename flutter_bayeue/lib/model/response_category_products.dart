@@ -8,17 +8,16 @@ class ProductsCategory {
   ProductsCategory.fromJson(Map<String, dynamic> json) {
     message = json['message'];
     rescode = json['rescode'];
-    result = json['result'] != null
-        ? new ResultProduct.fromJson(json['result'])
-        : null;
+    result =
+        json['result'] != null ? ResultProduct.fromJson(json['result']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['message'] = this.message;
-    data['rescode'] = this.rescode;
-    if (this.result != null) {
-      data['result'] = this.result!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['message'] = message;
+    data['rescode'] = rescode;
+    if (result != null) {
+      data['result'] = result!.toJson();
     }
     return data;
   }
@@ -33,15 +32,15 @@ class ResultProduct {
     if (json['products'] != null) {
       products = <Products>[];
       json['products'].forEach((v) {
-        products!.add(new Products.fromJson(v));
+        products!.add(Products.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.products != null) {
-      data['products'] = this.products!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (products != null) {
+      data['products'] = products!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -73,13 +72,13 @@ class Products {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['ID'] = this.iD;
-    data['Name'] = this.name;
-    data['Product_Slug'] = this.productSlug;
-    data['Category_Id'] = this.categoryId;
-    data['Image'] = this.image;
-    data['Status'] = this.status;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['ID'] = iD;
+    data['Name'] = name;
+    data['Product_Slug'] = productSlug;
+    data['Category_Id'] = categoryId;
+    data['Image'] = image;
+    data['Status'] = status;
     return data;
   }
 }
