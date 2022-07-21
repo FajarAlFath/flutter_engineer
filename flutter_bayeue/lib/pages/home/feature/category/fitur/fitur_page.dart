@@ -1,4 +1,8 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bayeue/model/response_checkout.dart';
+import 'package:flutter_bayeue/pages/home/feature/category/fitur/confirm.dart';
 import 'package:flutter_bayeue/viewmodel/products_providers.dart';
 import 'package:provider/provider.dart';
 import 'package:unicons/unicons.dart';
@@ -28,12 +32,19 @@ class _FiturPageState extends State<FiturPage> {
     return c.toString();
   }
 
+  fee2({required int a}) {
+    int b = 1500;
+    var c = a + b;
+    return c.toString();
+  }
+
   final formkey = GlobalKey<FormState>();
   final _numberController = TextEditingController();
   final _nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final postd = Provider.of<CheckoutProvider>(context);
     final details = Provider.of<ProductsDetailProvider>(context);
     return Scaffold(
       appBar: AppBar(
@@ -153,6 +164,7 @@ class _FiturPageState extends State<FiturPage> {
                         shrinkWrap: true,
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
+                          mainAxisSpacing: 16,
                           crossAxisSpacing: 40,
                           childAspectRatio: 18 / 10,
                           crossAxisCount: 2,
@@ -162,9 +174,26 @@ class _FiturPageState extends State<FiturPage> {
                             : 0,
                         itemBuilder: (context, i) {
                           return GestureDetector(
-                            onTap: () {
-                              print('tertekan');
-                            },
+                            onTap: (() async {
+                              if (formkey.currentState!.validate()) {
+                                String slugs = details
+                                    .getd!.result!.detail![i].detailSlug!;
+                                final response = await postd.post(
+                                    idCustomer: _numberController.text,
+                                    customerName: _nameController.text,
+                                    productslug: slugs);
+
+                                print(postd.postd!.result);
+                                CheckoutResponse? data = postd.postd;
+                                // ignore: use_build_context_synchronously
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: ((context) => Confirm(
+                                              data: data!,
+                                            ))));
+                              }
+                            }),
                             child: Container(
                                 decoration: BoxDecoration(
                                   boxShadow: [
@@ -210,8 +239,9 @@ class _FiturPageState extends State<FiturPage> {
                                           ),
                                         ),
                                         Text(
-                                          details.getd!.result!.detail![i].price
-                                              .toString(),
+                                          fee2(
+                                              a: details.getd!.result!
+                                                  .detail![i].price!),
                                           style: const TextStyle(
                                               fontSize: 15,
                                               fontWeight: FontWeight.bold),

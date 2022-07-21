@@ -25,7 +25,8 @@ class MyApp extends StatelessWidget {
           ),
           ChangeNotifierProvider(
             create: (_) => ProductsDetailProvider(),
-          )
+          ),
+          ChangeNotifierProvider(create: (_) => CheckoutProvider())
         ],
         builder: (context, child) {
           var authProvider = Provider.of<AuthProvider>(context);

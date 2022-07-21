@@ -201,6 +201,7 @@ class _HomePageState extends State<HomePage> {
                         shrinkWrap: true,
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
+                          mainAxisSpacing: 15,
                           childAspectRatio: 16 / 12,
                           crossAxisSpacing: 30,
                           crossAxisCount: 3,
@@ -213,7 +214,9 @@ class _HomePageState extends State<HomePage> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (_) => CategoryPage(
-                                      id: listresult[i].id.toString()),
+                                    id: listresult[i].id.toString(),
+                                    name: listresult[i].name,
+                                  ),
                                 ),
                               );
                             },
