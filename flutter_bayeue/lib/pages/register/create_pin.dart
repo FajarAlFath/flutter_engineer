@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bayeue/pages/login/login_page.dart';
+import 'package:flutter_bayeue/viewmodel/auth_provider.dart';
+import 'package:provider/provider.dart';
 
 class CreatePinPage extends StatefulWidget {
   const CreatePinPage({Key? key}) : super(key: key);
@@ -9,13 +11,14 @@ class CreatePinPage extends StatefulWidget {
 }
 
 class _CreatePinPageState extends State<CreatePinPage> {
-  final fromKey = GlobalKey<FormState>();
+  final _Key = GlobalKey<FormState>();
   // ignore: non_constant_identifier_names
   final _CreatePinController = TextEditingController();
   final _pinconfirmController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(context);
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 240, 244, 247),
       body: SafeArea(
@@ -23,7 +26,7 @@ class _CreatePinPageState extends State<CreatePinPage> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25),
           child: Form(
-            key: fromKey,
+            key: _Key,
             child: Column(
               children: [
                 Image.asset(
@@ -118,10 +121,14 @@ class _CreatePinPageState extends State<CreatePinPage> {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.pushAndRemoveUntil(context,
-                        MaterialPageRoute(builder: (ctx) {
-                      return const LoginPage();
-                    }), (route) => false);
+                    if (_Key.currentState!.validate()) {
+                      authProvider.pin(_pinconfirmController.text);
+
+                      Navigator.pushAndRemoveUntil(context,
+                          MaterialPageRoute(builder: (ctx) {
+                        return const LoginPage();
+                      }), (route) => false);
+                    }
                   },
                   child: const Text(
                     'Create Pin',

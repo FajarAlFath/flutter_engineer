@@ -58,13 +58,16 @@ class AuthApi {
     }
   }
 
-  static pin(code) async {
+  static pin(String code, token) async {
     var formValidation = {
-      "pin": pin,
+      "pin": code,
     };
     try {
       var dio = Dio();
-      var response = await dio.post('${Url.baseUrl}/pin', data: formValidation);
+      var response = await dio.post('${Url.baseUrl}/users/pin',
+          data: formValidation,
+          options: Options(headers: {"Authorization": "Bearer $token"}));
+      print(response.data);
       return response;
     } catch (e) {
       return null;

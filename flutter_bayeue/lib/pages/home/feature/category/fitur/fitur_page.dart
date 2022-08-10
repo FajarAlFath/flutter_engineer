@@ -48,7 +48,7 @@ class _FiturPageState extends State<FiturPage> {
     final details = Provider.of<ProductsDetailProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 247, 240, 240),
+        backgroundColor: const Color.fromARGB(255, 240, 244, 247),
         elevation: 0,
         leading: InkWell(
           onTap: () {
@@ -68,7 +68,7 @@ class _FiturPageState extends State<FiturPage> {
               color: Colors.black.withOpacity(0.7)),
         ),
       ),
-      backgroundColor: const Color.fromARGB(255, 247, 240, 240),
+      backgroundColor: const Color.fromARGB(255, 240, 244, 247),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(left: 25, right: 25),
@@ -137,7 +137,7 @@ class _FiturPageState extends State<FiturPage> {
                           return null;
                         },
                         decoration: InputDecoration(
-                          fillColor: const Color.fromARGB(255, 247, 240, 240),
+                          fillColor: const Color.fromARGB(255, 240, 244, 247),
                           filled: true,
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),

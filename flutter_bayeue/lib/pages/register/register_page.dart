@@ -240,6 +240,11 @@ class _RegisterPageState extends State<RegisterPage> {
                                   _noTelpController.text,
                                   _passwordController.text);
 
+                              await authProvider.addTemp(
+                                _emailController.text,
+                                _passwordController.text,
+                              );
+
                               // ignore: use_build_context_synchronously
                               Navigator.push(
                                 context,
